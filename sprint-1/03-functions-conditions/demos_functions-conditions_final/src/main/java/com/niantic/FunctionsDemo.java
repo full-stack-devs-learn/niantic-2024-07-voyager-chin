@@ -16,12 +16,13 @@ public class FunctionsDemo
         int q1, q2, q3, q4;
 
         // prompt the user for football team information
-        System.out.print("Enter the team rank: ");
-        rank = userInput.nextInt();
-        userInput.nextLine();
 
         System.out.print("Enter the team name: ");
         teamName = userInput.nextLine();
+
+        System.out.print("What are they ranked: ");
+        rank = userInput.nextInt();
+        userInput.nextLine();
 
         System.out.print("Q1 score: ");
         q1 = userInput.nextInt();
