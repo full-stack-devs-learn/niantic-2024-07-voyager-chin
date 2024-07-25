@@ -24,7 +24,11 @@ public class BackyardBasketball
      */
     public int calculateWinningPercentage(int gamesWon, int gamesLost)
     {
-        return 0;
+        int totalGames = gamesWon + gamesLost;
+        int totalPercentage = 100;
+        double winningPercentage = ( (double) gamesWon / totalGames ) * totalPercentage;
+
+        return (int) winningPercentage;
     }
 
 
@@ -43,7 +47,19 @@ public class BackyardBasketball
      */
     public int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree)
     {
-        return 0;
+        double decimalPercentage = (double) shotPercentage / 100;
+        double shotsWithPoints = decimalPercentage * shotsTaken;
+        double pointsScored = 0;
+
+        // if true, multiply shots by 3 points, ShotsWithPoints multiply to 3 points
+        // else, multiply shot by 2 points, shotsWithPoints multiply to 2 points
+        if (isThree) {
+            pointsScored = shotsWithPoints * 3;
+        } else {
+            pointsScored = shotsWithPoints * 2;
+        }
+
+        return (int) pointsScored;
     }
 
 
@@ -69,6 +85,92 @@ public class BackyardBasketball
      */
     public int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree)
     {
-        return 0;
+        double points3 = 3;
+        double points2 = 2;
+
+        double decimalPercentage = (double) shotPercentage / 100;
+
+        double targetPointShots;
+
+        if (isThree) {
+            targetPointShots = Math.ceil(desiredScore / points3);
+        } else {
+            targetPointShots = Math.ceil(desiredScore / points2);
+        }
+
+        double shotsRequired = Math.ceil(targetPointShots / decimalPercentage);
+
+        return (int) shotsRequired;
+
+//        double points3 = 3;
+//        double points2 = 2;
+//
+//        double decimalPercentage = (double) shotPercentage / 100;
+//
+//        double targetFullScore = Math.ceil(desiredScore / decimalPercentage);
+//
+//        double shotsRequired = 0;
+//        double probableScore;
+//
+//        if (isThree) {
+//            shotsRequired = Math.ceil(targetFullScore / points3);
+//            probableScore = shotsRequired * points3;
+//        } else {
+//            shotsRequired = Math.ceil(targetFullScore / points2);
+//            probableScore = shotsRequired * points2;
+//        }
+//
+//
+//        if (probableScore <= desiredScore) {
+//            shotsRequired += 1;
+//        }
+//
+//        return (int) shotsRequired;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        double decimalPercentage = (double) shotPercentage / 100;
+//        double target3PointShots = Math.ceil(desiredScore / 3);
+//        double target2PointShots = Math.ceil(desiredScore / 2);
+//
+//        double shotsRequired = 0;
+//
+//        if (isThree) {
+//            shotsRequired = Math.ceil((target3PointShots / shotPercentage) * 100);
+//        } else {
+//            shotsRequired = Math.ceil((target2PointShots / shotPercentage) * 100);
+//        }
+//
+//        return (int) shotsRequired;
+
+       // double multiplier = ( (double) shotPercentage + 100) / 100; //get multiplier - 1.5
+
+//        //shotPercentage = 50%, desiredScore = 10 , pointsPerShot = 3
+//        //10/3 = 4
+//
+//        double target3PointShots = Math.floor(desiredScore / 3);
+//        double target2PointShots = Math.floor(desiredScore / 2);
+//        double decimalPercentage = shotPercentage / 100;
+//
+//        double shotsRequired = 0;
+//
+//        if (isThree) {
+//            shotsRequired = ((desiredScore / decimalPercentage)/ target3PointShots) * target3PointShots;
+//        } else {
+//            shotsRequired = ((desiredScore / decimalPercentage)/ target2PointShots) * target2PointShots;
+//        }
+//
+//        return (int) shotsRequired;
+
     }
 }

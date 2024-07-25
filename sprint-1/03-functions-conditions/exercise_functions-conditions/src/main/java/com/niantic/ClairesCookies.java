@@ -19,9 +19,17 @@ public class ClairesCookies
      * calculateSubtotal(2) -> 25.90
      * calculateSubtotal(5) -> 64.75
      */
+
+
     public double calculateSubtotal(int quantity)
     {
-        return 0;
+        // Claire's cookies cost $12.95 a dozen.
+        double cookieDozenCost = 12.95;
+
+        //calculate total price of order based on quantity
+        double subTotal = quantity * cookieDozenCost;
+
+        return subTotal;
     }
 
     /*
@@ -43,7 +51,12 @@ public class ClairesCookies
      */
     public double calculateTotal(int quantity)
     {
-        return 0;
+        // Get tax amount based on subtotal
+        double tax = calculateSubtotal(quantity) * TaxRate;
+        // Add tax to subtotal
+        double total = calculateSubtotal(quantity) + tax;
+
+        return total;
     }
 
     /*
@@ -75,7 +88,29 @@ public class ClairesCookies
      */
     public double calculateQuickOrder(int snickerDozen, int chocolateDozen, int frostedDozen)
     {
-        return 0;
+        //  * Snicker Doodles:        $12.95 / dz
+        //     * Chocolate Chip:         $13.95 / dz
+        //     * Frosted Chocolate Chip: $15.95 / dz
+
+        double snickerCost = 12.95;
+        double chocolateCost = 13.95;
+        double frostedCost = 15.95;
+
+        //Calculate subtotal per flavor
+        double snickersubTotal = snickerDozen * snickerCost;
+        double chocolatesubTotal = chocolateDozen * chocolateCost;
+        double frostedsubTotal = frostedDozen * frostedCost;
+
+        double quickOrderSubtotal = snickersubTotal + chocolatesubTotal + frostedsubTotal;
+
+        //Calculate tax of order
+        double quickOrderTax = quickOrderSubtotal * TaxRate;
+
+        //Calculate total
+
+        double quickTotal = quickOrderSubtotal + quickOrderTax;
+
+        return quickTotal;
     }
 
 
@@ -103,7 +138,31 @@ public class ClairesCookies
      */
     public double calculateCustomOrder (int quantity, boolean hasChocolateChips, boolean hasFrosting)
     {
-        return 0;
+        // Declare prices under variable
+        double baseCookiePrice = 12.95;
+        double chocolateCustom = 1;
+        double frostingCustom = 2;
+
+        // Starting price
+        double customPrice = baseCookiePrice;
+
+        // Additional Price
+        if (hasChocolateChips) {
+            customPrice += chocolateCustom;
+        }
+        if (hasFrosting) {
+            customPrice += frostingCustom;
+        }
+
+        // Calculate subtotal according to quantity
+        double customSubtotal = customPrice * quantity;
+        // Calculate tax rate
+        double customTax = customSubtotal * TaxRate;
+        // Calculate total
+        double customTotal = customSubtotal + customTax;
+
+
+        return customTotal;
     }
 
 }
