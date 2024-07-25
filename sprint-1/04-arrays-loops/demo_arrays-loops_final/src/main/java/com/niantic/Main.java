@@ -43,7 +43,7 @@ public class Main
     public static void createArray2()
     {
         // short hand notation to create an array with values
-        int[] numbers = {15, 12, 98, 16};
+        int[] numbers = new int[]{15, 12, 98, 16};
 
         // this is what is happening in the background
         int[] nums = new int[4];
