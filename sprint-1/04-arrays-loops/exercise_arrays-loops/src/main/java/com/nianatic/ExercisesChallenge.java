@@ -19,7 +19,26 @@ public class ExercisesChallenge
      */
     public int sumFirst2Numbers(int[] numbers)
     {
-        return -1;
+        //Create variable to store sum of 2 numbers
+        int sumOf2 = 0;
+
+        if (numbers.length == 0)
+        {
+            //Do nothing because there are no integers to add
+        }
+        else if (numbers.length < 2)
+        {
+            //If there is only 1 integer, put the value in sumOf2
+            sumOf2 = numbers[0];
+        }
+        else
+        {
+            //If there are 2 or more initial values in the array, add the first 2 values
+            sumOf2 = numbers[0] + numbers[1];
+        }
+
+        //Return the sum of the first 2 values
+        return sumOf2;
     }
 
     /*
@@ -32,7 +51,20 @@ public class ExercisesChallenge
      */
     public String[] reverseNames(String[] names)
     {
-        return null;
+        //Variable that indicates array length
+        int len = names.length;
+
+        //Create an array that will store the reversed order of names
+        String [] reversedOrder = new String[len];
+
+        //For loop to assign each name starting from end of names array to an index in the reversedOrder array
+        for (int i = 0; i < names.length; i++) {
+            len -= 1; //Decrement by 1 to move to the next reversed value
+            reversedOrder[i] = names[len];
+        }
+
+        //Returns the list of names in reversed order
+        return reversedOrder;
     }
 
 

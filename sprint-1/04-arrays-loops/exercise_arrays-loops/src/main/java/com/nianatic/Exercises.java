@@ -9,9 +9,12 @@ public class Exercises
      *
      * [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
      */
+
     public String[] daysOfTheWeek()
     {
-        return null;
+        // returns all days of the week
+        return new String[] {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
     }
 
     /*
@@ -23,7 +26,8 @@ public class Exercises
      */
     public String[] monthsOfTheYear()
     {
-        return null;
+        // returns all months of the year
+        return new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     }
 
     /*
@@ -38,7 +42,17 @@ public class Exercises
      */
     public int[] oneToFifty()
     {
-        return null;
+        // Creates an array that holds 50 integer
+        int[] arrayOf50 = new int[50];
+
+        // Loops to insert value on each index of the integer array
+        for (int i = 1; i <= arrayOf50.length; i++)
+        {
+            arrayOf50[i - 1] = i;
+        }
+
+        // Returns the array of 50 integers
+        return arrayOf50;
     }
 
     /*
@@ -53,7 +67,21 @@ public class Exercises
      */
     public int[] evenNumbers()
     {
-        return null;
+        //Creates an array that can hold 100 integers.
+        int[] evenArrayTo200 = new int[100];
+
+        //Creates a variable for the starting count and to store current even values
+        int even = 2;
+
+        //Loops to insert value per index of the even array
+        for (int i = 0; i < evenArrayTo200.length; i++)
+        {
+            evenArrayTo200[i] = even;
+            even += 2; // Increments by 2 to get next even number
+        }
+
+        // Returns the array of even numbers from 2-200
+        return evenArrayTo200;
     }
 
     /*
@@ -75,7 +103,8 @@ public class Exercises
      */
     public String firstDayOfWeek(String[] daysOfTheWeek)
     {
-        return null;
+        //Access the 0 index and return the FIRST day of the week
+        return daysOfTheWeek[0];
     }
 
     /*
@@ -97,7 +126,8 @@ public class Exercises
      */
     public String lastDayOfWeek(String[] daysOfTheWeek)
     {
-        return null;
+        //Returns the LAST day based on parameter
+        return daysOfTheWeek[daysOfTheWeek.length - 1];
     }
 
     /*
@@ -116,7 +146,8 @@ public class Exercises
      */
     public String monthName(String[] months, int monthNumber)
     {
-        return null;
+        //Access selected month based on monthNumber argument and return selected month
+        return months[monthNumber - 1];
     }
 
     /*
@@ -138,7 +169,20 @@ public class Exercises
      */
     public boolean hasName(String[] names, String nameToFind)
     {
-        return false;
+        //Start variable value to false, it will remain false if name is not found
+        Boolean isNameFound = false;
+
+        //Loops through the names array to compare nameToFind arg to current index of namesArray
+        for (int i = 0; i < names.length; i++) {
+            if(nameToFind.equalsIgnoreCase(names[i])) //Ignores case
+            {
+                //If the comparison becomes true at any index, the value of foundName will be replaced to true
+                isNameFound = true;
+            }
+        }
+
+        //Returns value of foundName after the loop whether true or false
+        return isNameFound;
     }
 
     /*
@@ -159,7 +203,19 @@ public class Exercises
      */
     public int countName(String[] names, String nameToFind)
     {
-        return -1;
+        //Define a variable with a starting count of zero
+        int nameCount = 0;
+
+        //Loop to compare nameToFind with each index of namesArray
+        for (int i = 0; i < names.length; i++) {
+            if(nameToFind.equalsIgnoreCase(names[i])) // Ignores case
+            {
+                nameCount++; //add 1 to nameCount whenever comparison is true
+            }
+        }
+
+        //Returns total count of matching names found
+        return nameCount;
     }
 
     /*
@@ -173,7 +229,17 @@ public class Exercises
      */
     public int sumNumbers(int[] numbers)
     {
-        return -1;
+        //Create variable with an initial value of 0
+        int sum = 0;
+
+        //Loop to add each number in numbers array to add each value to sum
+        for(int num : numbers)
+        {
+            sum += num;
+        }
+
+        //Returns total sum of the input of numbers
+        return sum;
     }
 
     /*
@@ -188,7 +254,20 @@ public class Exercises
      */
     public int doubleEvens(int[] numbers)
     {
-        return -1;
+        //Create variable with an initial value of 0
+        int sum = 0;
+
+        //Loop to add each number in numbers array but only add EVEN numbers to the sum variable
+        for (int num : numbers)
+        {
+            if (num % 2 == 0)
+            {
+                sum += num;
+            }
+        }
+
+        //Returns total sum of even numbers and double the value
+        return sum * 2;
     }
 
     /*
@@ -203,7 +282,16 @@ public class Exercises
      */
     public int sumEveryThird(int[] numbers)
     {
-        return -1;
+        //Create sum variable with starting value of zero
+        int sum = 0;
+
+        //Loop for the numbersArray that will increment by 3
+        for (int i = 0; i < numbers.length; i+=3)
+        {
+            sum += numbers[i]; //Add every third value to the sum
+        }
+
+        return sum; // Returns total sum of every third number in the array
     }
 
     /*
@@ -216,7 +304,20 @@ public class Exercises
      */
     public double averagePrice(double[] prices)
     {
-        return -1;
+        //Create variable w/ zero initial value to store the sum
+        double sum = 0;
+
+        //Loop to prices argument and add each value to sum variable
+        for (double price : prices)
+        {
+            sum += price;
+        }
+
+        //Get average of sum using the array length
+        double average = sum / prices.length;
+
+        //Return the average price of the arguments
+        return average;
     }
 
     /*
@@ -229,20 +330,50 @@ public class Exercises
      */
     public double highestValue(double[] prices)
     {
-        return -1;
+        //Creates variable that will store the highest value
+        double highest = 0;
+
+        //Loop for each value in the array
+        for (double price : prices)
+        {
+            //Compare the absolute value of prices
+            if (Math.abs(price) > highest)
+            {
+                //Current price will be stored if it is higher than the previous value of the highest variable
+                highest = price;
+            }
+        }
+
+        //After the loop is done, return the highest value
+        return highest;
     }
 
     /*
      * 15)
      * Given an array of prices, return the
-     * lowest price that is greater than 0.
+     * lowest price.
      *
      * lowestPrice([-15.25, 15.25, 2.34, 3.50])                        =>  2.34
      * lowestPrice([12.75, -5.5, 10.25, 18.44, 4.23, -15.55, 9.20])    =>  -15.55
      */
     public double lowestValue(double[] prices)
     {
-        return -1;
+        //Create a variable that will store the lowest value
+        //Initial value can be the first index to avoid errors when value is less than 0
+        double lowest = prices[0];
+
+        //Loop for each value in the array
+        for (double price : prices )
+        {
+            //Current price will be stored if it is lower than the previous value of the lowest variable
+            if (price < lowest)
+            {
+                lowest = price;
+            }
+        }
+
+        //Return lowest price from the arguments
+        return lowest;
     }
 
 }
