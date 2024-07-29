@@ -9,5 +9,7 @@ public class StringIndexOf
 
         // the dashIndex is 3
         System.out.println("The first dash is at index: " + dashIndex);
+//        String firstThree = ssn.substring(0, dashIndex);
+//        System.out.println(firstThree);
     }
 }

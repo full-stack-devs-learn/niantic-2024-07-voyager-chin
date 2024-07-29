@@ -9,7 +9,7 @@ public class StringToLowerCase
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter a string:");
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().strip();
         String lowerCaseInput = input.toLowerCase();
 
         System.out.println("Lowercase version: " + lowerCaseInput);
