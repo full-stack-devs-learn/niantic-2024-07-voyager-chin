@@ -18,18 +18,20 @@ class ExerciseChallengeTests
     }
 
 
+
     @ParameterizedTest
     @CsvSource({
-            "Samuel Black, , Black, Samuel, ",
-            "Glen Carter Williamson, ,glen.c.williamson",
-            "Glen Williamson, Jr, glen.williamson",
-            "Glen Carter Williamson, Jr, glen.c.williamson",
+            "Samuel Black, Black| Samuel, ",
+            "Lori Bell| PhD, Bell| Lori| PhD",
+            "Marcus Neuer III, Neuer| Marcus| III",
+            "Miguel Bennett Jr.| MBA, Bennett| Miguel| Jr.| MBA",
     })
     @Order(1)
-    public void test01_createUserName_ShouldReturn_ProperlyFormattedUserName(String fullName, String suffix, String expected)
+    public void test01_createUserName_ShouldReturn_ProperlyFormattedUserName(String fullName, String expected)
     {
         // arrange
-        fullName = suffix == null ? fullName : fullName + ", " + suffix;
+        fullName = fullName.replace("|", ",");
+        expected = expected.replace("|", ",");
 
         // act
         var actual = ex.reformatName(fullName);
