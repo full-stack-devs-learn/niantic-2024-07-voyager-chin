@@ -179,10 +179,10 @@ class ExerciseTests
 
     @ParameterizedTest
     @CsvSource({
-            "Samuel Black, Black| Samuel",
-            "Lori Bell| PhD, Bell| Lori| PhD",
-            "Marcus Neuer III, Neuer| Marcus| III",
-            "Miguel Bennett Jr.| MBA, Bennett| Miguel| Jr.| MBA"
+            "Glen Williamson, glen.williamson",
+            "Glen Carter Williamson, glen.c.williamson",
+            "Glen Williamson| III, glen.williamson",
+            "Miguel Bennett| Jr.| MBA, miguel.bennett"
     })
     @Order(7)
     public void test07_createUserName_ShouldReturn_ProperlyFormattedUserName(String fullName, String expected)
@@ -190,13 +190,13 @@ class ExerciseTests
         // arrange
         fullName = fullName.replace("|", ",");
         expected = expected.replace("|", ",");
-        ExerciseChallenge ex = new ExerciseChallenge();
+        Exercises ex = new Exercises();
 
         // act
-        var actual = ex.reformatName(fullName);
+        var actual = ex.createUserName(fullName);
 
         // arrange
-        System.out.println("1) Reformat the given name into a standardized format");
+        System.out.println("7) Create user name");
         System.out.println("   Input Name: " + fullName);
         System.out.println("   Expected: " + expected);
         System.out.println();
