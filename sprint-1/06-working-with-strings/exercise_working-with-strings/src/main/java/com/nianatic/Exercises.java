@@ -18,7 +18,21 @@ public class Exercises
      */
     public String changeCase(String word, boolean toUpperCase)
     {
-        return null;
+        //Converted word will be stored in this variable
+        String converted;
+
+        //Check if toUpperCase is true or false
+        if (toUpperCase)
+        {
+            converted = word.toUpperCase(); //If true convert to uppercase
+        }
+        else
+        {
+            converted = word.toLowerCase(); //If false convert to lowercase
+        }
+
+        //Return the converted word
+        return converted;
     }
 
     /*
@@ -49,7 +63,10 @@ public class Exercises
      */
     public String createHtml(String content, String elementName)
     {
-        return null;
+        //Combine parameters with correct formatting and store in html variable
+        String html = "<" + elementName + ">" + content + "</" + elementName + ">";
+        //Return html format
+        return html;
     }
 
     /*
@@ -71,7 +88,23 @@ public class Exercises
      */
     public String moreHtml(String content, String elementName)
     {
-        return null;
+        //Variable that will store html
+        String html;
+
+        //Check if content is empty or not
+        if (content.isEmpty())
+        {
+            //If empty, assign the self closing format to html
+            html = "<" + elementName + " />" ;
+        }
+        else
+        {
+            //If not empty, assign the full html format with content to html
+            html = "<" + elementName + ">" + content + "</" + elementName + ">";
+        }
+
+        //Return the resulting value
+        return html;
     }
 
     /*
@@ -94,7 +127,10 @@ public class Exercises
      */
     public String createXml(int id, String name)
     {
-        return  null;
+        //Combine xml formatting with parameters and assign to xml
+        String xml = "<customer><id>" + id + "</id><name>" + name + "</name></customer>";
+        //Return xml format
+        return  xml;
     }
 
     /*
@@ -131,7 +167,10 @@ public class Exercises
      */
     public String formattedXml(int id, String name)
     {
-        return null;
+        //Combine parameters with correct xml formatting with \n and spaces to indent
+        String xml = "<customer>\n  <id>" + id + "</id>\n  <name>" + name + "</name>\n</customer>";
+        //Return xml format
+        return xml;
     }
 
     /*
@@ -155,7 +194,36 @@ public class Exercises
      */
     public String formatFullName(String firstName, String middleName, String lastName, String suffix)
     {
-        return  null;
+        //Variable that will store the formatted full name
+        String fullName;
+
+        //Check if suffix is provided
+        if (suffix.isEmpty())
+        {
+            //Check if middleName is provided
+            if(middleName.isEmpty())
+            {
+                fullName = firstName + " " + lastName;
+            }
+            else {
+                fullName = firstName + " " + middleName + " " + lastName;
+            }
+        }
+        else
+        {
+            //Check if middleName is provided
+            if(middleName.isEmpty())
+            {
+                fullName = firstName + " " + lastName + ", " + suffix;
+            }
+            else
+            {
+                fullName = firstName + " " + middleName + " " + lastName + ", " + suffix;
+            }
+        }
+
+        //Return formatted fullName
+        return  fullName;
     }
 
     /*
@@ -186,6 +254,35 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
-        return null;
+        //Variable that will store the username
+        String userName;
+
+        //Check if the full name has a suffix
+        if(fullName.contains(", ")) //if there is suffix:
+        {
+            int sIndex = fullName.indexOf((String) ", "); //get the index # at the end of last name
+            String nameOnly = fullName.substring( 0, sIndex); //get the full nameOnly (w/o suffix)
+            userName = nameOnly.replace(' ', '.'); //replace space with .
+        }
+        else //else: name w/o suffix
+        {
+            int index1 = fullName.indexOf((String) " "); //get index # of the first space
+            int index2 = fullName.lastIndexOf((String) " "); //get index # of last space
+
+            if(index2 > index1) //checks if there is middle name
+            {
+                String firstName = fullName.substring(0, index1); //get the first name
+                String lastName = fullName.substring(index2+1, fullName.length()); //get the last name
+                String middleInitial = fullName.substring(index1+1, index1+2); //get the middle initial
+
+                userName = firstName + "." + middleInitial + "." + lastName; //combine the firstName, lastName, middleInitial w/ "."
+            }
+            else //else: w/o middle name
+            {
+                userName = fullName.replace(" ", "."); //
+            }
+        }
+        //Return username in lowercase
+        return userName.toLowerCase();
     }
 }
