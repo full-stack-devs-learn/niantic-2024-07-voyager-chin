@@ -7,3 +7,7 @@ USE northwind;
 
 -- Expected: 1 row
 
+SELECT product_name
+	, units_in_stock
+FROM products
+WHERE units_in_stock < reorder_level AND units_on_order = 0;

@@ -6,3 +6,9 @@ USE northwind;
 
 -- Expected: 13 rows
 
+SELECT company_name
+	, contact_name
+    , phone
+    , fax
+FROM suppliers
+WHERE fax IS NOT NULL;

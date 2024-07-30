@@ -4,4 +4,8 @@ use northwind;
 -- all customers in Oregon (OR)
 -- Expected: 4 rows
 
-
+SELECT company_name
+	, city
+    , region
+FROM customers
+WHERE region = 'OR';

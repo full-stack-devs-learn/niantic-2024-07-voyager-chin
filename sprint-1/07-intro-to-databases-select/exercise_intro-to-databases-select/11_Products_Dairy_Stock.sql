@@ -9,3 +9,8 @@ USE northwind;
 
 -- Expected: 10 rows
 
+SELECT product_name
+	, unit_price
+    , unit_price + units_in_stock AS units_available_for_sale
+FROM products
+WHERE category_id = 4;

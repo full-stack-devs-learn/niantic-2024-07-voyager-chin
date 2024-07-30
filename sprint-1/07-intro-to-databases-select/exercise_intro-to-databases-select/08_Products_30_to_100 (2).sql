@@ -5,3 +5,7 @@ USE northwind;
 
 -- Expected: 23 rows
 
+SELECT product_name
+	, unit_price
+FROM products
+WHERE unit_price >= 30 AND unit_price <= 100;
