@@ -5803,6 +5803,8 @@ SELECT c.category_id
     , p.unit_price
     , p.quantity_per_unit
     , p.units_in_stock
+    , p.units_on_order
+    , p.reorder_level
     , p.discontinued
 FROM categories AS c
 INNER JOIN products AS p 
