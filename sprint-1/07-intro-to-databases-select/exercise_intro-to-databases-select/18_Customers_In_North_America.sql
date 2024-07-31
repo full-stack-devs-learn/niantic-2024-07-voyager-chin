@@ -12,4 +12,5 @@ SELECT contact_name
 FROM customers
 WHERE country = 'Canada'
 	OR country = 'USA'
-    OR country = 'Mexico';
+    OR country = 'Mexico'
+ORDER BY country;
