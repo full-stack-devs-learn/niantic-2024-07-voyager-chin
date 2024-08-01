@@ -5,7 +5,7 @@
 -- the product names to find the id
 
 -- To add new customer details, please replace the values here:
-SET @new_customer_id = 'ZZENT';
+SET @new_customer_id = 'ZZENR';
 SET @new_company_name = 'ZebraZone Enterprises';
 SET @new_contact_name = 'Zara Zinnia';
 SET @new_address = '987 Zebra Lane';
@@ -113,9 +113,13 @@ INSERT INTO orders (customer_id, order_date)
 VALUES (@new_customer_id, @date_today);
 
 -- ADD PRODUCTS TO ORDER:
+SET @order_id = last_insert_id();
+
 INSERT INTO order_details (order_id, product_id, unit_price, quantity, discount)
-VALUES (@order_id, product_id1, @price1, 1, 0)
-	, (@order_id, product_id2, @price2, 1, 0)
-    , (@order_id, product_id3, @price3, 1, 0)
-	, (@order_id, product_id4, @price4, 1, 0)
-	, (@order_id, product_id5, @price5, 1, 0);
+VALUES (@order_id, @product_id1, @price1, 1, 0)
+	, (@order_id, @product_id2, @price2, 1, 0)
+    , (@order_id, @product_id3, @price3, 1, 0)
+	, (@order_id, @product_id4, @price4, 1, 0)
+	, (@order_id, @product_id5, @price5, 1, 0);
+
+
