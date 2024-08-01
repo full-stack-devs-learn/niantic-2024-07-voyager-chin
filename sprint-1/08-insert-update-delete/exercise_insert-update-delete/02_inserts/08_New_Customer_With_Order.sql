@@ -4,12 +4,6 @@
 -- that store the 5 product names(*ID) the customer wants to buy. You will use
 -- the product names to find the id
 
--- SELECT *
--- FROM customers;
-
--- SELECT *
--- FROM products;
-
 -- To add new customer details, please replace the values here:
 SET @new_customer_id = 'ZZENT';
 SET @new_company_name = 'ZebraZone Enterprises';
@@ -20,22 +14,39 @@ SET @new_region ='CA';
 SET @new_postal_code = 94120;
 SET @new_country = 'USA';
 
+-- Please input the product names for the new order:
+SET @product_1 = 'Chai';
+SET @product_2 = 'Chang';
+SET @product_3 = 'Aniseed Syrup';
+SET @product_4 = 'Mishi Kobe Niku';
+SET @product_5 = 'Ikura';
+-- (Note: Each product order will have a default quantity of 1)
+
 -- Please change the order date if needed
 SET @date_today = '2024-07-31 00:00:00';
-
--- Please input the product_id numbers for your new order:
-SET @product_id1 = 80;
-SET @product_id2 = 3;
-SET @product_id3 = 15;
-SET @product_id4 = 35;
-SET @product_id5 = 70;
--- (Note: Each product order will have a default quantity of 1)
 
 -- ----------------------------------------------------------- --
 -- Please do not change any values after this line. Thank you! --
 -- ----------------------------------------------------------- --
 
--- Product prices:
+-- Get product ids:
+SELECT @product_id1:= product_id
+FROM products
+WHERE product_name = @product_1;
+SELECT @product_id2:= product_id
+FROM products
+WHERE product_name = @product_2;
+SELECT @product_id3:= product_id
+FROM products
+WHERE product_name = @product_3;
+SELECT @product_id4:= product_id
+FROM products
+WHERE product_name = @product_4;
+SELECT @product_id5:= product_id
+FROM products
+WHERE product_name = @product_5;
+
+-- Get product prices:
 SELECT @price1:= unit_price
 FROM products
 WHERE product_id = @product_id1;
@@ -97,19 +108,11 @@ OrderDetails: (Create 5 line items)
 INSERT INTO customers (customer_id, company_name, contact_name, address, city, region, postal_code, country)
 VALUES (@new_customer_id, @new_company_name, @new_contact_name, @new_address, @new_city, @new_region, @new_postal_code, @new_country);
 
--- ADD NEW ORDER
+-- ADD NEW ORDER:
 INSERT INTO orders (customer_id, order_date)
 VALUES (@new_customer_id, @date_today);
 
--- ADD NEW ORDER DETAILS
--- SELECT @price5:= unit_price
--- FROM products
--- WHERE product_id = @product_id5;
-
--- SELECT @order_id:= order_id
--- FROM orders
--- WHERE customer_id = @new_customer_id;
-
+-- ADD PRODUCTS TO ORDER:
 INSERT INTO order_details (order_id, product_id, unit_price, quantity, discount)
 VALUES (@order_id, product_id1, @price1, 1, 0)
 	, (@order_id, product_id2, @price2, 1, 0)
