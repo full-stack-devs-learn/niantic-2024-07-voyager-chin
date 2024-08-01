@@ -21,12 +21,24 @@ Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint
 -- script that holds the Category Name.
 -- The sript should do the rest
 
-SET @category_to_delete = 9; -- category id input
+
+-- To delete a category, please replace the value here with the category name you want to delete:
+SET @category_name = 'Sporting Goods';
+
+
+-- ----------------------------------------------------------- --
+-- Please do not change any values after this line. Thank you! --
+-- ----------------------------------------------------------- --
+
+SELECT @category_id:= category_id
+FROM categories
+WHERE category_name = @category_name;
 
 DELETE FROM products
-WHERE category_id = @category_to_delete;
+WHERE category_id = @category_id;
 
 DELETE FROM categories
-WHERE category_name = @category_to_delete;
+WHERE category_name = @category_name;
+
 
 

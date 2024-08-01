@@ -94,17 +94,25 @@ OrderDetails: (Create 5 line items)
 */
 
 -- ADD NEW CUSTOMER:
--- INSERT INTO customers (customer_id, company_name, contact_name, address, city, region, postal_code, country)
--- VALUES (@new_customer_id, @new_company_name, @new_contact_name, @new_address, @new_city, @new_region, @new_postal_code, @new_country);
+INSERT INTO customers (customer_id, company_name, contact_name, address, city, region, postal_code, country)
+VALUES (@new_customer_id, @new_company_name, @new_contact_name, @new_address, @new_city, @new_region, @new_postal_code, @new_country);
 
 -- ADD NEW ORDER
--- INSERT INTO orders (customer_id, order_date, contact_name, address, city, region, postal_code, country)
--- VALUES (@new_customer_id, @date_today, @new_contact_name, @new_address, @new_city, @new_region, @new_postal_code, @new_country);
+INSERT INTO orders (customer_id, order_date)
+VALUES (@new_customer_id, @date_today);
 
 -- ADD NEW ORDER DETAILS
--- INSERT INTO order_details (product_id, unit_price, quantity, discount)
--- VALUES (product_id1, @price1, 1, 0)
--- 	, (product_id2, @price2, 1, 0)
---     , (product_id3, @price3, 1, 0)
--- 	, (product_id4, @price4, 1, 0)
--- 	, (product_id5, @price5, 1, 0)
+-- SELECT @price5:= unit_price
+-- FROM products
+-- WHERE product_id = @product_id5;
+
+-- SELECT @order_id:= order_id
+-- FROM orders
+-- WHERE customer_id = @new_customer_id;
+
+INSERT INTO order_details (order_id, product_id, unit_price, quantity, discount)
+VALUES (@order_id, product_id1, @price1, 1, 0)
+	, (@order_id, product_id2, @price2, 1, 0)
+    , (@order_id, product_id3, @price3, 1, 0)
+	, (@order_id, product_id4, @price4, 1, 0)
+	, (@order_id, product_id5, @price5, 1, 0);
