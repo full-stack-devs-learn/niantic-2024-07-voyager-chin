@@ -13,3 +13,18 @@ USE northwind;
 
 -- Expected: 8 Rows
 
+-- SELECT *
+
+SELECT company_name
+	, order_date
+    , order_id
+	, product_name
+    , sales_price
+    , quantity
+    , discount
+    , sales_price * quantity AS subtotal
+    , sales_price * quantity * discount AS line_discount
+    , sales_price * quantity - sales_price * quantity * discount AS line_total
+FROM customer_orders
+WHERE sales_price * quantity * discount > 1000
+ORDER BY discount DESC;

@@ -1,8 +1,56 @@
--- Create a full script with variables that allows you 
+-- Create a full script with variables that allows you
 -- to add a new Customer into the database. Then create an order for them
--- that includes 5 products. Create 5 variables at the top of the script
--- that store the 5 product names the customer wants to buy. You will use
+-- that includes 5 products (*product id). Create 5 variables at the top of the script
+-- that store the 5 product names(*ID) the customer wants to buy. You will use
 -- the product names to find the id
+
+-- SELECT *
+-- FROM customers;
+
+-- SELECT *
+-- FROM products;
+
+-- To add new customer details, please replace the values here:
+SET @new_customer_id = 'ZZENT';
+SET @new_company_name = 'ZebraZone Enterprises';
+SET @new_contact_name = 'Zara Zinnia';
+SET @new_address = '987 Zebra Lane';
+SET @new_city = 'San Francisco';
+SET @new_region ='CA';
+SET @new_postal_code = 94120;
+SET @new_country = 'USA';
+
+-- Please change the order date if needed
+SET @date_today = '2024-07-31 00:00:00';
+
+-- Please input the product_id numbers for your new order:
+SET @product_id1 = 80;
+SET @product_id2 = 3;
+SET @product_id3 = 15;
+SET @product_id4 = 35;
+SET @product_id5 = 70;
+-- (Note: Each product order will have a default quantity of 1)
+
+-- ----------------------------------------------------------- --
+-- Please do not change any values after this line. Thank you! --
+-- ----------------------------------------------------------- --
+
+-- Product prices:
+SELECT @price1:= unit_price
+FROM products
+WHERE product_id = @product_id1;
+SELECT @price2:= unit_price
+FROM products
+WHERE product_id = @product_id2;
+SELECT @price3:= unit_price
+FROM products
+WHERE product_id = @product_id3;
+SELECT @price4:= unit_price
+FROM products
+WHERE product_id = @product_id4;
+SELECT @price5:= unit_price
+FROM products
+WHERE product_id = @product_id5;
 
 -- Requirements
 /*
@@ -45,3 +93,18 @@ OrderDetails: (Create 5 line items)
     Discount: 0
 */
 
+-- ADD NEW CUSTOMER:
+-- INSERT INTO customers (customer_id, company_name, contact_name, address, city, region, postal_code, country)
+-- VALUES (@new_customer_id, @new_company_name, @new_contact_name, @new_address, @new_city, @new_region, @new_postal_code, @new_country);
+
+-- ADD NEW ORDER
+-- INSERT INTO orders (customer_id, order_date, contact_name, address, city, region, postal_code, country)
+-- VALUES (@new_customer_id, @date_today, @new_contact_name, @new_address, @new_city, @new_region, @new_postal_code, @new_country);
+
+-- ADD NEW ORDER DETAILS
+-- INSERT INTO order_details (product_id, unit_price, quantity, discount)
+-- VALUES (product_id1, @price1, 1, 0)
+-- 	, (product_id2, @price2, 1, 0)
+--     , (product_id3, @price3, 1, 0)
+-- 	, (product_id4, @price4, 1, 0)
+-- 	, (product_id5, @price5, 1, 0)

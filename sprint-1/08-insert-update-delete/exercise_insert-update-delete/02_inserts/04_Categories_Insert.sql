@@ -6,3 +6,13 @@ USE northwind;
 --              This includes equipment needed for team sports as well
 --              as outdoor activities such as camping or river rafting.
 
+INSERT INTO categories
+(
+	category_name
+    , description
+)
+VALUES
+(
+	'Sporting Goods'
+    , 'All products that relate to recreational activities. This includes equipment needed for team sports as well as outdoor activities such as camping or river rafting.'
+);
