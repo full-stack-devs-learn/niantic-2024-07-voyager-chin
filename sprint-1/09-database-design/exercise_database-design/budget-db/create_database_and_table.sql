@@ -1,14 +1,3 @@
-/*
-Develop a script that will create the database and all appropriate tables needed for this project.
-You should also add scripts to populate the tables with sample values
-(you can use ChatGPT to help generate sample data to add to your scripts).
-
-CREATE TABLE transactions
-(
-    -- add columns here
-)
-*/
-
 DROP DATABASE IF EXISTS budget;
 
 CREATE DATABASE budget;
