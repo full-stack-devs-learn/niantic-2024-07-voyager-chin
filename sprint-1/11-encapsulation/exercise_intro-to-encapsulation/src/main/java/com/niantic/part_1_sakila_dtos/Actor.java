@@ -2,15 +2,18 @@ package com.niantic.part_1_sakila_dtos;
 
 public class Actor
 {
+    // Declare private variables:
     private int id;
     private String firstName;
     private String lastName;
 
+    // Parameterless constructor
     public Actor()
     {
 
     }
 
+    // Parameterized constructor
     public Actor(int id, String firstName, String lastName)
     {
         this.id = id;
@@ -18,6 +21,7 @@ public class Actor
         this.lastName = lastName;
     }
 
+    // Public 'getters' and 'setters':
     public int getActorId() { return id; }
 
     public void setActorId(int id) { this.id = id; }
