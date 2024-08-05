@@ -2,7 +2,7 @@ package com.niantic.part_1_sakila_dtos;
 
 public class Film
 {
-    // Declare private variables for Customer data
+    // Declare private variables for Film data
     private int filmId;
     private String title;
     private String description;
