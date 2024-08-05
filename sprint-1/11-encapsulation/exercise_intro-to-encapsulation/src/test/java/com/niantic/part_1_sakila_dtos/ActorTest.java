@@ -1,4 +1,4 @@
-package com.niantic.part_1_sakila_dao;
+package com.niantic.part_1_sakila_dtos;
 
 import com.niantic.ReflectionBase;
 import org.junit.jupiter.api.BeforeEach;
