@@ -65,6 +65,27 @@ public class CategoryDao
      */
     public Category getCategoryById(int categoryId)
     {
+        // 1. Build query to select values
+        String sql = """
+                SELECT category_id
+                    , category_name
+                    , description
+                FROM categories
+                WHERE category_id = ?;
+                """;
+
+        // 2. Execute query
+        var row = jdbcTemplate.queryForRowSet(sql, categoryId);
+
+        // 3. Loop through rows and return category information
+        if(row.next())
+        {
+            String categoryName = row.getString("category_name");
+            String description = row.getString("description");
+
+            return new Category(categoryId, categoryName, description);
+        }
+
         return null;
     }
 
@@ -75,6 +96,13 @@ public class CategoryDao
      */
     public void addCategory(Category category)
     {
+        // Build query to insert values
+        String sql = "INSERT INTO categories (category_name, description) VALUES (?,?);";
+
+        // Execute query to add category name and description from using get function
+        jdbcTemplate.update(sql,
+                                category.getCategoryName(),
+                                category.getDescription());
     }
 
     /*
@@ -84,6 +112,20 @@ public class CategoryDao
      */
     public void updateCategory(Category category)
     {
+        // Build query to update values matching given category_id
+        String sql = """
+                UPDATE categories
+                SET category_name = ?
+                    , description = ?
+                WHERE category_id = ?
+                """;
+
+        // Execute query to update category name and description from using get function
+        jdbcTemplate.update(sql,
+                category.getCategoryName(),
+                category.getDescription(),
+                category.getCategoryId()
+            );
     }
 
     /*
@@ -92,7 +134,10 @@ public class CategoryDao
      */
     public void deleteCategory(int categoryId)
     {
+        // Build query to delete category that matches given categoryId
+        String sql = "DELETE FROM categories WHERE category_id = ?;";
+
+        // Execute query to delete the row
+        jdbcTemplate.update(sql, categoryId);
     }
-
-
 }
