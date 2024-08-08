@@ -3,6 +3,7 @@ package com.niantic.exercises;
 import com.niantic.models.OrderLineItem;
 
 import java.util.ArrayList;
+import java.util.OptionalDouble;
 
 
 /*
@@ -25,14 +26,38 @@ public class Order
      */
     public void addItem(OrderLineItem item)
     {
+        OrderLineItem itemToAdd = null;
+
+        // Search item by name
+        for (OrderLineItem itemInCart : shoppingCart)
+        {
+            if(itemInCart.getProduct().equalsIgnoreCase(item.getProduct()))
+            {
+                itemToAdd = itemInCart;
+                break;
+            }
+        }
+
+        if(itemToAdd != null)
+        {
+            // If item exist, update quantity to add to existing quantity
+            int quantity = itemToAdd.getQuantity() + item.getQuantity();
+            itemToAdd.setQuantity(quantity);
+        }
+        else
+        {
+            // If item doesn't exist yet, add item and quantity
+            shoppingCart.add(item);
+        }
     }
 
     /*
-    2. Add logic to allow a user to add an Item to a shopping cart
+    2. Add logic to allow a user to remove an Item to a shopping cart
         - search for a line item by name, and remove it from the list
      */
     public void removeItem(OrderLineItem item)
     {
+        shoppingCart.remove(item);
     }
 
     /*
@@ -43,7 +68,28 @@ public class Order
      */
     public OrderLineItem findHighestPriceProduct()
     {
-        return null;
+        // Check if shopping cart is empty then return null
+        if (shoppingCart.isEmpty())
+        {
+            return null;
+        }
+        // If shopping cart contain item/s:
+        else
+        {
+            OrderLineItem highestPrice = shoppingCart.getFirst();
+
+            // Find the highest price then return it
+            for (OrderLineItem itemInCart : shoppingCart)
+            {
+                if (itemInCart.getPrice() > highestPrice.getPrice())
+                {
+                    highestPrice = itemInCart;
+                }
+            }
+
+            return highestPrice;
+        }
+
     }
 
     /*
@@ -54,7 +100,30 @@ public class Order
      */
     public OrderLineItem findMostExpensiveLineItem()
     {
-        return null;
+        // Check if shopping cart is empty then return null
+        if (shoppingCart.isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            // If shopping cart is not empty, find the highest line price:
+            OrderLineItem mostExpensive = shoppingCart.getFirst();
+
+            for (OrderLineItem itemInCart : shoppingCart)
+            {
+                // Calculate total line price
+                double itemPrice = itemInCart.getQuantity() * itemInCart.getPrice();
+                double highestPrice = mostExpensive.getQuantity() * mostExpensive.getPrice();
+
+                // Replace variable if current item line price is higher than existing line price
+                if (itemPrice > highestPrice)
+                {
+                    mostExpensive = itemInCart;
+                }
+            }
+            return mostExpensive;
+        }
     }
 
     /*
@@ -62,7 +131,16 @@ public class Order
      */
     public double getOrderTotal()
     {
-        return 0;
+        double orderTotal = 0;
+
+        // Calculate item total price  for each line order
+        for (OrderLineItem itemInCart : shoppingCart)
+        {
+            double itemTotal = itemInCart.getPrice() * itemInCart.getQuantity();
+            orderTotal += itemTotal; // Add each line total to order total variable
+        }
+
+        return orderTotal;
     }
 
     /*
@@ -70,7 +148,17 @@ public class Order
      */
     public int getTotalItemCount()
     {
-        return 0;
+        int totalItemCount = 0;
+
+        // Get quantity of all items in cart
+        for (OrderLineItem itemInCart : shoppingCart)
+        {
+            int itemQuantity = itemInCart.getQuantity();
+            // Add each item quantity to the total item count
+            totalItemCount += itemQuantity;
+        }
+
+        return totalItemCount;
     }
 
     /*
@@ -78,6 +166,17 @@ public class Order
      */
     public double getAveragePricePerItem()
     {
-        return 0;
+        double totalPrice = 0;
+        double totalQuantity = 0;
+
+        for (OrderLineItem itemInCart : shoppingCart)
+        {
+           //Calculate total price per item and add to totalPrice
+           totalPrice += itemInCart.getPrice() * itemInCart.getQuantity();
+           //Get quantity of each item and add to totalQuantity
+           totalQuantity += itemInCart.getQuantity();
+        }
+
+        return totalPrice / totalQuantity;
     }
 }
