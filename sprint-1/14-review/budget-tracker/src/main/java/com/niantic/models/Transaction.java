@@ -1,6 +1,7 @@
 package com.niantic.models;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Transaction
 {
@@ -9,8 +10,8 @@ public class Transaction
     private int userId;
     private int subCategoryId;
     private int vendorId;
-    private Date transactionDate;
-    private double amount;
+    private LocalDate transactionDate;
+    private BigDecimal amount;
     private String notes;
 
     // Parameterless
@@ -20,7 +21,7 @@ public class Transaction
     };
 
     // Parameterized
-    public Transaction(int transactionId, int userId, int subCategoryId, int vendorId, Date transactionDate, double amount, String notes)
+    public Transaction(int transactionId, int userId, int subCategoryId, int vendorId, LocalDate transactionDate, BigDecimal amount, String notes)
     {
         this.transactionId = transactionId;
         this.userId = userId;
@@ -32,6 +33,7 @@ public class Transaction
     }
 
     // Getters and setters
+
     public int getTransactionId() { return transactionId; }
 
     public void setTransactionId(int transactionId) { this.transactionId = transactionId; }
@@ -48,13 +50,13 @@ public class Transaction
 
     public void setVendorId(int vendorId) { this.vendorId = vendorId; }
 
-    public Date getTransactionDate() { return transactionDate; }
+    public LocalDate getTransactionDate() { return transactionDate; }
 
-    public void setTransactionDate(Date transactionDate) { this.transactionDate = transactionDate; }
+    public void setTransactionDate(LocalDate transactionDate) { this.transactionDate = transactionDate; }
 
-    public double getAmount() { return amount; }
+    public BigDecimal getAmount() { return amount; }
 
-    public void setAmount(double amount) { this.amount = amount; }
+    public void setAmount(BigDecimal amount) { this.amount = amount; }
 
     public String getNotes() { return notes; }
 
