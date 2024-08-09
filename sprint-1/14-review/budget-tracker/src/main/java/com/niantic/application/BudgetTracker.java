@@ -3,6 +3,8 @@ package com.niantic.application;
 import com.niantic.models.Transaction;
 import com.niantic.services.TransactionDao;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Scanner;
 
 //import static java.util.FormatProcessor.FMT;
@@ -114,9 +116,9 @@ public class BudgetTracker
     private int reportsSelection()
     {
         System.out.println();
+        System.out.println("--------------------------------------");
         System.out.println("Reports");
         System.out.println("--------------------------------------");
-        System.out.println("Select from the following options:");
         System.out.println();
         System.out.println("  1) Transactions By User");
         System.out.println("  2) Transactions By Month");
@@ -134,26 +136,24 @@ public class BudgetTracker
     {
 
         System.out.println();
+        System.out.println("-".repeat(100));
         System.out.println("Transactions By User");
         System.out.println("-".repeat(100));
-        int userId = getUserInt("Enter user id: ");
+        int userId = getUserInt("Enter User Id: ");
         System.out.println();
 
         var transactions = transactionDao.getTransactionByUser(userId);
 
-        System.out.print("Transactions for User ID: ");
-        System.out.print(userId);
-        System.out.println(" transaction_id | transaction_date | amount | notes ");
-        System.out.println("---------------------------------------------------");
+        System.out.println("-".repeat(100));
+        System.out.println(" Date        Amount    Notes ");
+        System.out.println("----------  --------  ------------------");
 
         for (Transaction transaction : transactions)
         {
-            System.out.print(transaction.getTransactionId());
-            System.out.print(" | ");
             System.out.print(transaction.getTransactionDate());
-            System.out.print(" | ");
+            System.out.print("   $");
             System.out.print(transaction.getAmount());
-            System.out.print(" | ");
+            System.out.print("   ");
             System.out.print(transaction.getNotes());
             System.out.println();
 
@@ -166,6 +166,7 @@ public class BudgetTracker
     {
 
         System.out.println();
+        System.out.println("-".repeat(100));
         System.out.println("Transactions By Month");
         System.out.println("-".repeat(100));
         String month = getUserString("Enter month (Format: MM) : ");
@@ -173,19 +174,16 @@ public class BudgetTracker
 
         var transactions = transactionDao.getTransactionByMonth(month);
 
-        System.out.print("Transactions for Month: ");
-        System.out.print(month);
-        System.out.println(" user_id | transaction_date | amount | notes ");
-        System.out.println("---------------------------------------------------");
+        System.out.println("-".repeat(100));
+        System.out.println(" Date        Amount    Notes ");
+        System.out.println("----------  --------  ------------------");
 
         for (Transaction transaction : transactions)
         {
-            System.out.print(transaction.getUserId());
-            System.out.print(" | ");
             System.out.print(transaction.getTransactionDate());
-            System.out.print(" | ");
+            System.out.print("   $");
             System.out.print(transaction.getAmount());
-            System.out.print(" | ");
+            System.out.print("   ");
             System.out.print(transaction.getNotes());
             System.out.println();
 
@@ -198,6 +196,7 @@ public class BudgetTracker
     {
 
         System.out.println();
+        System.out.println("-".repeat(100));
         System.out.println("Transactions By Year");
         System.out.println("-".repeat(100));
         int year = getUserInt("Enter year (Format: YYYY) : ");
@@ -205,19 +204,16 @@ public class BudgetTracker
 
         var transactions = transactionDao.getTransactionByYear(year);
 
-        System.out.print("Transactions for Year: ");
-        System.out.print(year);
-        System.out.println(" user_id | transaction_date | amount | notes ");
-        System.out.println("---------------------------------------------------");
+        System.out.println("-".repeat(100));
+        System.out.println(" Date        Amount    Notes ");
+        System.out.println("----------  --------  ------------------");
 
         for (Transaction transaction : transactions)
         {
-            System.out.print(transaction.getUserId());
-            System.out.print(" | ");
             System.out.print(transaction.getTransactionDate());
-            System.out.print(" | ");
+            System.out.print("   $");
             System.out.print(transaction.getAmount());
-            System.out.print(" | ");
+            System.out.print("   ");
             System.out.print(transaction.getNotes());
             System.out.println();
 
@@ -230,6 +226,7 @@ public class BudgetTracker
     {
 
         System.out.println();
+        System.out.println("-".repeat(100));
         System.out.println("Transactions By Sub Category");
         System.out.println("-".repeat(100));
         int subCategoryId = getUserInt("Enter sub category id: ");
@@ -237,19 +234,16 @@ public class BudgetTracker
 
         var transactions = transactionDao.getTransactionBySubCategory(subCategoryId);
 
-        System.out.print("Transactions for Sub Category ID: ");
-        System.out.print(subCategoryId);
-        System.out.println(" user_id | transaction_date | amount | notes ");
-        System.out.println("---------------------------------------------------");
+        System.out.println("-".repeat(100));
+        System.out.println(" Date        Amount    Notes ");
+        System.out.println("----------  --------  ------------------");
 
         for (Transaction transaction : transactions)
         {
-            System.out.print(transaction.getUserId());
-            System.out.print(" | ");
             System.out.print(transaction.getTransactionDate());
-            System.out.print(" | ");
+            System.out.print("   $");
             System.out.print(transaction.getAmount());
-            System.out.print(" | ");
+            System.out.print("   ");
             System.out.print(transaction.getNotes());
             System.out.println();
 
@@ -262,6 +256,7 @@ public class BudgetTracker
     {
 
         System.out.println();
+        System.out.println("-".repeat(100));
         System.out.println("Transactions By Category");
         System.out.println("-".repeat(100));
         int categoryId = getUserInt("Enter category id: ");
@@ -269,21 +264,16 @@ public class BudgetTracker
 
         var transactions = transactionDao.getTransactionByCategory(categoryId);
 
-        System.out.print("Transactions for Category ID: ");
-        System.out.print(categoryId);
-        System.out.println(" user_id | transaction_date | sub_category_id | amount | notes ");
-        System.out.println("---------------------------------------------------");
+        System.out.println("-".repeat(100));
+        System.out.println(" Date        Amount    Notes ");
+        System.out.println("----------  --------  ------------------");
 
         for (Transaction transaction : transactions)
         {
-            System.out.print(transaction.getUserId());
-            System.out.print(" | ");
             System.out.print(transaction.getTransactionDate());
-            System.out.print(" | ");
-            System.out.print(transaction.getSubCategoryId());
-            System.out.print(" | ");
+            System.out.print("   S");
             System.out.print(transaction.getAmount());
-            System.out.print(" | ");
+            System.out.print("   ");
             System.out.print(transaction.getNotes());
             System.out.println();
 
