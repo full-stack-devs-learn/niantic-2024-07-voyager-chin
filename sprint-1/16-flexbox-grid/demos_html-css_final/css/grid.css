@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, 'sans-serif';
+    margin: 10px;
+    height: 200vw
+}
+
+nav, main, .div-2, .div-4 {
+    background-color: white;
+    border: solid 3px black;
+    border-radius: 5px;
+    height: 100px;
+    /* width: 100px; */
+    text-align: center;
+    vertical-align:middle;
+    padding: 35px;
+    /* margin: 10px; */
+    font-weight: 900;
+}
+
+nav {
+    border-color: red;
+    background-color: #ff000022;
+    grid-area: nav;
+    text-align: start;
+    padding: 0
+}
+
+nav ul {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+nav ul li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+
+.div-2 {
+    border-color: blue;
+    background-color: #0000ff22;
+    grid-area: left
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-color: green;
+    background-color: #00800022;
+    grid-area: main
+}
+
+.div-4 {
+    border-color: orange;
+    background-color: #ffa50022;
+    grid-area: foot
+}
+
+#parent-div {
+    display: grid;
+    grid-template-areas: 
+        "nav nav nav nav" 
+        "left main main main" 
+        "foot foot foot foot";
+
+    border: solid 3px black;
+    border-radius: 5px;
+    gap: 10px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    #parent-div {
+        grid-template-areas: 
+            "nav" 
+            "main" 
+            "left" 
+            "foot";
+    }
+    
+}
+@media screen and (max-width: 900px) {
+    #parent-div {
+        grid-template-areas: 
+            "nav" 
+            "main" 
+            "foot";
+    }
+
+    .div-2 {
+        display: none;
+    }
+
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}
