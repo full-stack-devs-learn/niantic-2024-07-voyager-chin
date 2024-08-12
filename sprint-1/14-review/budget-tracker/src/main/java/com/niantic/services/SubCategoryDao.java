@@ -45,16 +45,19 @@ public class SubCategoryDao
         // Execute query
         var row = jdbcTemplate.queryForRowSet(sql, subCategoryName);
 
-        // Store values from query to variables
-        int subCategoryId = row.getInt("sub_category_id");
-        int categoryId = row.getInt("category_id");
-        String description = row.getString("description");
+        if (row.next())
+        {
+            // Store values from query to variables
+            int subCategoryId = row.getInt("sub_category_id");
+            int categoryId = row.getInt("category_id");
+            String description = row.getString("description");
 
-        // Put found subcategory in a variable
-        SubCategory subCategory = new SubCategory(subCategoryId, subCategoryName, description);
+            // Put found subcategory in a variable
+            return new SubCategory(subCategoryId, subCategoryName, description);
+        }
 
         // Return subCategory
-        return subCategory;
+        return null;
     }
 
 

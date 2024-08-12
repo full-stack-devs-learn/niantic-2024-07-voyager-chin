@@ -3,13 +3,11 @@ package com.niantic.services;
 import com.niantic.models.Transaction;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
-
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class TransactionDao
 {
@@ -87,11 +85,13 @@ public class TransactionDao
                     , amount
                     , notes
                 FROM transactions
-                WHERE transaction_date LIKE '____-?-__';
+                WHERE transaction_date LIKE ?;
                 """;
 
+        String monthPattern = "%-" + month + "-%";
+
         // Execute query
-        var row = jdbcTemplate.queryForRowSet(sql, month);
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, monthPattern);
 
         // Loop through rows to get transaction information
         while (row.next())
@@ -129,11 +129,13 @@ public class TransactionDao
                     , amount
                     , notes
                 FROM transactions
-                WHERE transaction_date LIKE '?%';
+                WHERE transaction_date LIKE ?;
                 """;
 
+        String yearPattern = year + "%";
+
         // Execute query
-        var row = jdbcTemplate.queryForRowSet(sql, year);
+        var row = jdbcTemplate.queryForRowSet(sql, yearPattern);
 
         // Loop through rows to get transaction information
         while (row.next())
@@ -282,15 +284,16 @@ public class TransactionDao
         // Build query to insert values into transactions table
         String sql = "INSERT INTO transactions (user_id, sub_category_id, vendor_id, transaction_date, amount, notes) VALUES (?,?,?,?,?,?);";
 
+        // Get values
+        int userId = transaction.getUserId();
+        int subCategoryId = transaction.getSubCategoryId();
+        int vendorId = transaction.getVendorId();
+        LocalDate date = transaction.getTransactionDate();
+        BigDecimal amount = transaction.getAmount();
+        String notes = transaction.getNotes();
+
         // Execute query to add transaction details
-        jdbcTemplate.update(sql,
-                transaction.getUserId(),
-                transaction.getSubCategoryId(),
-                transaction.getVendorId(),
-                transaction.getTransactionDate(),
-                transaction.getAmount(),
-                transaction.getNotes()
-        );
+        jdbcTemplate.update(sql, userId, subCategoryId, vendorId, date, amount, notes);
     }
 
     //not priority + updateTransaction(transaction: Transaction): void

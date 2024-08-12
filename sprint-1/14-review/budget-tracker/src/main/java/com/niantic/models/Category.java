@@ -19,7 +19,7 @@ public class Category {
         this.categoryName = categoryName;
         this.description = description;
     }
-    
+
     // Getters and setters
     public int getCategoryId() {
         return categoryId;

@@ -18,7 +18,7 @@ public class Transaction
     public Transaction()
     {
 
-    };
+    }
 
     // Parameterized
     public Transaction(int transactionId, int userId, int subCategoryId, int vendorId, LocalDate transactionDate, BigDecimal amount, String notes)

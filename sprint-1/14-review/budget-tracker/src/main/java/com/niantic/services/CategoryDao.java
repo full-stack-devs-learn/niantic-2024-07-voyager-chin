@@ -45,15 +45,18 @@ public class CategoryDao {
         // Execute query
         var row = jdbcTemplate.queryForRowSet(sql, categoryName);
 
-        // Store values from query to variables
-        int categoryId = row.getInt("category_id");
-        String description = row.getString("description");
+        if (row.next())
+        {
+            // Store values from query to variables
+            int categoryId = row.getInt("category_id");
+            String description = row.getString("description");
 
-        // Put found subcategory in a variable
-        Category category = new Category(categoryId, categoryName, description);
+            // Put found category in a variable
+            return new Category(categoryId, categoryName, description);
+        }
 
-        // Return subCategory
-        return category;
+        // Return Category
+        return null;
     }
 
 

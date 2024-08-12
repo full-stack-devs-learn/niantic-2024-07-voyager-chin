@@ -2,12 +2,9 @@ package com.niantic.services;
 import com.niantic.models.User;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
 
 public class UserDao
 {
@@ -50,20 +47,22 @@ public class UserDao
                 """;
 
         // Execute query
-        var row = jdbcTemplate.queryForRowSet(sql, userName);
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, userName);
 
+        if(row.next())
+        {
+            int userId = row.getInt("user_id");
+            String firstName = row.getString("first_name");
+            String lastName = row.getString("last_name");
+            String phone = row.getString("phone");
+            String email = row.getString("email");
 
-        int userId = row.getInt("user_id");
-        String firstName = row.getString("first_name");
-        String lastName = row.getString("last_name");
-        String phone = row.getString("phone");
-        String email = row.getString("email");
+            // Return user found
+            return new User(userId, userName, firstName, lastName, phone, email);
+        }
 
-        // Put found user in a variable
-        User user = new User(userId, userName, firstName, lastName, phone, email);
+        return null;
 
-        // Return userId found
-        return user;
     }
 
     // + addUser(user: User): void
