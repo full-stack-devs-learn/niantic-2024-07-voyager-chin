@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: .5px dotted cyan;
+    /* border: .5px dotted cyan; Guide lines for styling */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -16,7 +16,12 @@ html, body {
 /* Remove bullet points of all list */
 li {
     list-style: none;
+}
+
+li a {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: none;
+    color: black;
 }
 
 /* HEADER and NAVBAR */
@@ -25,21 +30,26 @@ li {
     max-width: 135px;
 }
 
-.navbar {
+.navbar1, .navbar2 {
     display: flex;
     justify-content: space-around;
     border-bottom: rgb(209, 209, 209) solid 1px;
+    justify-content: space-between;
+    padding: 0 20px;
+    
 }
 
-.navbar ul {
+.navbar1 ul, .navbar2 ul {
     display: flex;
     align-items: center;
 }
 
-.navbar li {
-    margin: 0 10px;
-    padding: 20px 10px;
+.navbar2 li {
+    margin: 0px 10px 0 10px;
     font-size: 25px;
+    height: 75px;
+    display: flex;
+    align-items: center;
 }
 
 .menu li {
@@ -47,25 +57,35 @@ li {
     padding: 10px;
 }
 
-.navbar button {
+.navbar1 {
+    background-color: white;
+    width: 100%;
+}
+
+button {
     background-color: #2d5d2a;
     padding: 10px;
     border-radius: 30px;
     color: white;
+    cursor: pointer;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+button:hover {
+    background-color: rgb(49, 62, 49);
+}
+
 .icons {
-    max-width: 24px;
+    width: 24px;
     height: auto;
+    cursor: pointer;
 }
 
 .promo {
     display: flex;
     justify-content: flex-end;
     color: #e70100;
-    height: 40px;
-    align-self: center;
+    align-items: center;
 }
 
 .promo input {
@@ -76,29 +96,148 @@ li {
 
 .promo button {
     border-radius: 0 8px 8px 0;
+    margin-right: 20px;
+    border: none;
 }
 
 .promo h4 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 10px;
+}
+
+.cart-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-left: rgb(209, 209, 209) solid 1px;
+    padding-left: 20px;
 }
 
 /* End of HEADER and NAVBAR */
 
+
 /* MAIN */
-.hero {
-    max-width: 110%;
+
+.hero-image-container {
+    transform: translateX(-15%);
 }
 
 .feature {
+    padding: 70px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
 }
 
+.hover1, .hover2, .hover3 {
+    position: absolute;
+    display: none;
+}
+
+.img-container1:hover .hover1,
+.img-container2:hover .hover2,
+.img-container3:hover .hover3 {
+    display: block;
+}
 
 /* End of MAIN */
 
 
 /* FOOTER */
 
+footer {
+    color: rgb(98, 98, 98);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+footer li a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 10px;
+}
+
+footer .navbar1 {
+    border-top: rgb(209, 209, 209) solid 1px;
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+footer p {
+    padding: 1rem 30px;
+}
+
+footer img {
+    filter: opacity(60%);
+}
+
+footer img:hover {
+    filter: opacity(100%);
+}
+
+strong {
+    color: black;
+}
+
+footer a {
+    text-decoration: none;
+    color: rgb(98, 98, 98)
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 /* End of FOOTER */
+
+/* Media Queries */
+
+@media screen and (max-width: 750px) {
+    
+    .menu li {
+        display:none;
+    }
+    
+    .promo {
+        display:none
+    }
+    
+    #logo {
+        margin: 10px;
+    }
+    
+    .navbar1, .navbar2 {
+        justify-content: center;
+    }
+    
+    .navbar2 {
+        max-height: 2em;
+    }
+    
+    .navbar2 li {
+        font-size: 15px;
+        padding: 0;
+    }
+
+    .hero-image-container img {
+        max-width: 800px;
+    }
+
+    .hero-image-container {
+        transform: translateX(-10%);
+    }
+
+    .feature {
+        padding: 20px;
+    }
+
+    .mobile-hide, .mobile-hide li {
+        display: none;
+    }
+
+    footer p {
+        text-align: center;
+        padding: 0;
+    }
+}
