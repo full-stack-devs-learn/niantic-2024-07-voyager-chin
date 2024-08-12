@@ -1,0 +1,104 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); */
+
+/* Remove margin and padding of all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: .5px dotted cyan;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* Remove bullet points of all list */
+li {
+    list-style: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* HEADER and NAVBAR */
+
+#logo {
+    max-width: 135px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: rgb(209, 209, 209) solid 1px;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+}
+
+.navbar li {
+    margin: 0 10px;
+    padding: 20px 10px;
+    font-size: 25px;
+}
+
+.menu li {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.navbar button {
+    background-color: #2d5d2a;
+    padding: 10px;
+    border-radius: 30px;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.icons {
+    max-width: 24px;
+    height: auto;
+}
+
+.promo {
+    display: flex;
+    justify-content: flex-end;
+    color: #e70100;
+    height: 40px;
+    align-self: center;
+}
+
+.promo input {
+    border: 1px solid rgb(146, 146, 146);
+    border-radius: 6px 0 0 6px;
+    padding: 9px;
+}
+
+.promo button {
+    border-radius: 0 8px 8px 0;
+}
+
+.promo h4 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* End of HEADER and NAVBAR */
+
+/* MAIN */
+.hero {
+    max-width: 110%;
+}
+
+.feature {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* End of MAIN */
+
+
+/* FOOTER */
+
+/* End of FOOTER */
