@@ -14,7 +14,10 @@
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
 <h4>Categories</h4>
-
+    <form action="categories" method="get">
+        <input type="text" name="category" placeholder="Category">
+        <input type="submit" value="Search">
+    </form>
     <a th:href="@{/categories/new}">New</a>
 <table class="table table-striped">
     <thead>
@@ -24,9 +27,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1</td>
-        <td>First Category</td>
+    <tr th:each="category:${categories}">
+        <td th:text="${category.categoryId}"></td>
+        <td><a th:href="@{|/categories/${category.categoryId}|}" th:text="${category.categoryName}" style="text-decoration: none; color: black;"></a></td>
     </tr>
     </tbody>
 </table>
