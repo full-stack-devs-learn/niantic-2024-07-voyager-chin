@@ -35,7 +35,7 @@ public class CategoriesController
         return "categories/index";
     }
 
-    @GetMapping("/actors/{id}")
+    @GetMapping("/categories/{id}")
     public String details(Model model, @PathVariable int id)
     {
         var category = categoryDao.getCategoryById(id);
