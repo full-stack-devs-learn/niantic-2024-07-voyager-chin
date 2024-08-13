@@ -29,7 +29,7 @@
     <tbody>
     <tr th:each="category:${categories}">
         <td th:text="${category.categoryId}"></td>
-        <td><a th:href="@{|/categories/${category.categoryId}|}" th:text="${category.categoryName}" style="text-decoration: none; color: black;"></a></td>
+        <td><a th:href="@{|/categories/${category.categoryId}|}" th:text="${category.categoryName}"></a></td>
     </tr>
     </tbody>
 </table>
