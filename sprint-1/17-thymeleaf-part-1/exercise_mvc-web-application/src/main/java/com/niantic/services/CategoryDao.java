@@ -114,5 +114,59 @@ public class CategoryDao
         jdbcTemplate.update(sql, categoryId);
     }
 
+    // Create get category by name
+    public ArrayList<Category> getCategoryByName(String searchCategory)
+    {
+        searchCategory = "%" + searchCategory + "%";
 
+        var categories = new ArrayList<Category>();
+
+        String sql = """
+                SELECT category_id
+                    , category_name
+                    , description
+                FROM categories
+                WHERE category_name LIKE ?;
+                """;
+
+        var row = jdbcTemplate.queryForRowSet(sql, searchCategory);
+
+        while(row.next())
+        {
+            int categoryId = row.getInt("category_id");
+            String categoryName = row.getString("category_name");
+            String description = row.getString("description");
+
+            var category = new Category(categoryId, categoryName, description);
+            categories.add(category);
+        }
+
+        return categories;
+    }
+
+    public ArrayList<Category> getAllCategories()
+    {
+        ArrayList<Category> categories = new ArrayList<Category>();
+
+        String sql = """
+                SELECT category_id
+                    , category_name
+                    , description
+                FROM categories;
+                """;
+
+        var row = jdbcTemplate.queryForRowSet(sql);
+
+        while(row.next())
+        {
+            int categoryId = row.getInt("category_id");
+            String categoryName = row.getString("category_name");
+            String description = row.getString("description");
+
+            var category = new Category(categoryId, categoryName, description);
+            categories.add(category);
+        }
+
+        return categories;
+    }
 }
