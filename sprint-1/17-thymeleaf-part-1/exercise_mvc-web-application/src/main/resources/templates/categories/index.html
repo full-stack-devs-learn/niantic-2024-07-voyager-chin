@@ -14,11 +14,11 @@
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
 <h4>Categories</h4>
-    <form action="categories" method="get">
+    <form action="categories" method="get" class="mb-3">
         <input type="text" name="category" placeholder="Category">
         <input type="submit" value="Search">
     </form>
-    <a th:href="@{/categories/new}">New</a>
+    <a th:href="@{/categories/add}" class="btn btn-success mb-3">Add Category</a>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -30,6 +30,10 @@
     <tr th:each="category:${categories}">
         <td th:text="${category.categoryId}"></td>
         <td><a th:href="@{|/categories/${category.categoryId}|}" th:text="${category.categoryName}"></a></td>
+        <td>
+            <a th:href="@{|/categories/${category.categoryId}/edit|}" class="btn btn-outline-warning">Edit</a>
+            <a th:href="@{|/categories/${category.categoryId}/delete|}" class="btn btn-outline-danger">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -13,12 +13,18 @@
 <body>
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
+    <h4 th:if="${action} == 'add'">Add Category</h4>
+    <h4 th:if="${action} == 'edit'">Edit Category</h4>
+
     <div>
-        <h4>Add Category</h4>
         <form method="post" th:object="${category}">
-            <div class="form-floating mb-3">
+            <div class="mb-3">
+                <label th:for="*{categoryName}">Category Name</label>
                 <input class="form-control" type="text" th:field="*{categoryName}">
-                <label th:for="*{categoryName}"></label>
+            </div>
+            <div class="mb-3">
+                <label th:for="*{description}">Description</label>
+                <input class="form-control" type="text" th:field="*{description}">
             </div>
             <input type="submit" value="Save" class="btn btn-outline-danger">
         </form>
