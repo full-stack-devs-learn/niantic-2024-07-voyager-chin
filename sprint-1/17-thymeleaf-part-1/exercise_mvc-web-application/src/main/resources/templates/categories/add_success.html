@@ -13,16 +13,9 @@
 <body>
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
-    <div>
-        <h4>Add Category</h4>
-        <form method="post" th:object="${category}">
-            <div class="form-floating mb-3">
-                <input class="form-control" type="text" th:field="*{categoryName}">
-                <label th:for="*{categoryName}"></label>
-            </div>
-            <input type="submit" value="Save" class="btn btn-outline-danger">
-        </form>
-    </div>
+
+        <h2><span th:text="${category.categoryName}"></span> was added successfully.</h2>
+
 </main>
 </body>
 </html>
