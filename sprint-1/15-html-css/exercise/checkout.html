@@ -10,7 +10,7 @@
     <header>
         <nav>
             <div class="navbar1">
-                <img id="logo" src="/images/logo-small-2021.svg">
+                <a href="index.html"><img id="logo" src="/images/logo-small-2021.svg"></a>
                 <ul class="menu">
                     <li><a href="/details.html">TRACK MY ORDER</a></li>
                     <li><a href="/details.html">START YOUR ORDER</a></li>
@@ -21,8 +21,8 @@
             <div class="navbar2">
                 <ul>
                     <li><a href="/details.html">MENU</a></li>
-                    <li><a href="/details.html">DEALS</a></li>
-                    <li><a href="/details.html">PAPA REWARDS</a></li>
+                    <li><a href="/index.html">DEALS</a></li>
+                    <li><a href="/index.html">PAPA REWARDS</a></li>
                 </ul>
                 <div class="promo">
                     <input type="text" placeholder="Enter a promo code">
@@ -35,20 +35,15 @@
             </div>
         </nav>
     </header>
-    <main>
-        <div class="customer-form">
-            <form>
-                
-            </form>
-        </div>
+    <main class="checkout-main">
         <div class="order-container">
             <h2>YOUR ORDER</h2>
             <div class="order-content">
-                <img src="/images/details-cheesy-burger-pizza.webp">
-                <div class="order-details">
-                    <h4>Large Original Crust Cheesy Burger Pizza</h4>
-                    <a href="/details.html">View Details</a>
-                </div>
+                    <img class="pizza-thumbnail" src="/images/details-cheesy-burger-pizza.webp">
+                    <div class="order-details">
+                        <h4>Large Original Crust Cheesy Burger Pizza</h4>
+                        <a class="details" href="/details.html">View Details</a>
+                    </div>
                 <div class="price">
                     <select>
                         <option>1</option>
@@ -77,15 +72,57 @@
                     <td>$2.55</td>
                 </tr>
                 <tr>
-                    <th>ORDER TOTAL</th>
-                    <th>$32.04</th>
+                    <th class="total">ORDER TOTAL</th>
+                    <th class="total">$32.04</th>
                 </tr>
             </table>
+            <div class="promo">
+                <input type="text" placeholder="Enter a promo code">
+                <button>APPLY</button>
+            </div>
         </div>
-        <div class="checkout"></div>
-        <div class="promo">
-            <input type="text" placeholder="Enter a promo code">
-            <button>APPLY</button>
+        <div class="checkout">
+            <div class="customer-form">
+                <h2>DELIVERY DETAILS</h2>
+                <form class="checkout-form">
+                        <label for="address">Street Address﹡</label>
+                            <input id="address" type="text">
+                        <div>
+                            <label for="city">City﹡</label>
+                                <input id="city" type="text">
+                        </div>
+                        <div>
+                            <label for="zipcode">Zip Code﹡</label>
+                                <input id="zipcode" type="numeric">
+                        </div>
+                        <div>
+                            <label for="mobile">Mobile Number﹡</label>
+                                <input id="mobile" type="numeric">
+                        </div>
+                </form>
+                <h2>PAYMENT</h2>
+                <div class="cc">
+                    <img src="/images/debit-credit.svg">
+                    <h4 style="display: inline;">Credit or Debit Card</h5>
+                </div>
+                <form class="checkout-form">
+                    <label for="card-number">Card Number﹡</label>
+                        <input id="card-number" type="numeric">
+                    <label for="card-name">Name On Card﹡</label>
+                        <input id="card-name" type="text">
+                    <div>
+                        <label for="mmyy">MM/YY﹡</label>
+                            <input id="mmyy" type="text">
+                    </div>
+                    <div>
+                        <label for="cvv">CVV﹡</label>
+                            <input id="cvv" type="numeric">              
+                    </div>
+                </form>
+            </div>
+            <div class="button-container">
+                <button class="place-order">PLACE ORDER</button>
+            </div>
         </div>
     </main>
     <footer>
