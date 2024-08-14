@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<div th:replace="fragments/head :: head"></div>
+
+<body>
+
+<div th:replace="fragments/navigation :: nav"></div>
+
+<main class="container mt-4">
+    <h1>Actor Details</h1>
+
+    <table class="table">
+        <tr><th>Id:</th> <td th:text="${actor.actorId}"></td></tr>
+        <tr><th>First Name:</th> <td th:text="${actor.firstName}"></td></tr>
+        <tr><th>Last Name:</th> <td th:text="${actor.lastName}"></td></tr>
+    </table>
+
+</main>
+</body>
+</html>
