@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --citron: #bbbe64;
+    --magenta: #8E5572;
+    --cream:  #F2F7F2;
+    --khaki: #BCAA99;
+    --violet: #443850;
+
+    --magenta-light: #8E557222;
+    --khaki-light: #BCAA9922;
+}
+
+body {
+    /*font-family: Montserrat, 'sans-serif';*/
+}
