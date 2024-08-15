@@ -14,19 +14,19 @@
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
     <div>
-        <h4>Category Details</h4>
+        <h4>Product Details</h4>
         <table class="table table-striped">
         <tr>
             <td>ID</td>
-            <td th:text="${category.categoryId}"></td>
+            <td th:text="${product.productID}"></td>
         </tr>
         <tr>
             <td>Name</td>
-            <td th:text="${category.categoryName}"></td>
+            <td th:text="${product.productName}"></td>
         </tr>
         <tr>
             <td>Description</td>
-            <td th:text="${category.description}"></td>
+            <td th:text="${product.description}"></td>
         </tr>
         </table>
     </div>
