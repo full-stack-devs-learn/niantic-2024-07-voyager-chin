@@ -225,4 +225,39 @@ public class ProductDao
         return products;
     }
 
+    public Product getProductById(int productId)
+    {
+        var product = new Product();
+
+        String sql = """
+                SELECT product_id
+                    , category_id
+                    , product_name
+                    , quantity_per_unit
+                    , unit_price
+                    , units_in_stock
+                    , units_on_order
+                    , reorder_level
+                FROM products
+                WHERE product_id = ?;
+                """;
+
+        var row = jdbcTemplate.queryForRowSet(sql, productId);
+
+        while(row.next())
+        {
+            int categoryId = row.getInt("category_id");
+            String productName = row.getString("product_name");
+            String quantityPerUnit = row.getString("quantity_per_unit");
+            double unitPrice = row.getDouble("unit_price");
+            int unitsInStock = row.getInt("units_in_stock");
+            int unitsOnOrder = row.getInt("units_on_order");
+            int reorderLevel = row.getInt("reorder_level");
+
+            product = new Product(productId, categoryId, productName, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel);
+        }
+
+        return product;
+    }
+
 }
