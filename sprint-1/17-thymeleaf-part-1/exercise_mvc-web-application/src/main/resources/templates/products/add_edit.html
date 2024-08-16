@@ -17,14 +17,37 @@
     <h4 th:if="${action} == 'edit'">Edit Product</h4>
 
     <div>
-        <form method="post" th:object="${product}">
+        <form method="post" th:object="${product}" action="#">
             <div class="mb-3">
-                <label th:for="*{productName}">Product</label>
+                <label th:for="*{productName}">Product Name</label>
                 <input class="form-control" type="text" th:field="*{productName}">
             </div>
             <div class="mb-3">
-                <label th:for="*{unitPrice}">Price</label>
+                <label>Category</label>
+                <select class="form-control" th:field="*{categoryId}">
+<!--                    SELECT / OPTION NOT WORKING. NEED FIX: -->
+                    <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryId}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label th:for="*{quantityPerUnit}">Quantity Per Unit</label>
+                <input class="form-control" type="text" th:field="*{quantityPerUnit}">
+            </div>
+            <div class="mb-3">
+                <label th:for="*{unitPrice}">Unit Price</label>
                 <input class="form-control" type="text" th:field="*{unitPrice}">
+            </div>
+            <div class="mb-3">
+                <label th:for="*{unitsInStock}">Units in Stock</label>
+                <input class="form-control" type="text" th:field="*{unitsInStock}">
+            </div>
+            <div class="mb-3">
+                <label th:for="*{unitsOnOrder}">Units on Order</label>
+                <input class="form-control" type="text" th:field="*{unitsOnOrder}">
+            </div>
+            <div class="mb-3">
+                <label th:for="*{reorderLevel}">Units in Stock</label>
+                <input class="form-control" type="text" th:field="*{reorderLevel}">
             </div>
             <input type="submit" value="Save" class="btn btn-outline-danger">
         </form>

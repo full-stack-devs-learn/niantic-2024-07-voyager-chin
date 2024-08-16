@@ -26,7 +26,7 @@
     <table class="table">
         <tr><th>Id:</th><td th:text="${product.productId}"></td></tr>
         <tr><th>Name:</th><td th:text="${product.productName}"></td></tr>
-        <tr><th>Price:</th><td th:text="${product.unitPrice}"></td></tr>
+        <tr><th>Price:</th><td th:text="${#numbers.formatCurrency(product.unitPrice)}"></td></tr>
     </table>
 
 </main>

@@ -16,18 +16,38 @@
     <div>
         <h4>Product Details</h4>
         <table class="table table-striped">
-        <tr>
-            <td>ID</td>
-            <td th:text="${product.productID}"></td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td th:text="${product.productName}"></td>
-        </tr>
-        <tr>
-            <td>Price</td>
-            <td th:text="${product.unitPrice}"></td>
-        </tr>
+            <tr>
+                <td>ID</td>
+                <td th:text="${product.productId}"></td>
+            </tr>
+            <tr>
+                <td>Product Name</td>
+                <td th:text="${product.productName}"></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td th:text="${product.categoryId}"></td>
+            </tr>
+            <tr>
+                <td>Quantity Per Unit</td>
+                <td th:text="${product.quantityPerUnit}"></td>
+            </tr>
+            <tr>
+                <td>Unit Price</td>
+                <td th:text="${#numbers.formatCurrency(product.unitPrice)}"></td>
+            </tr>
+            <tr>
+                <td>Units in Stock</td>
+                <td th:text="${product.unitsInStock}"></td>
+            </tr>
+            <tr>
+                <td>Units on Order</td>
+                <td th:text="${product.unitsOnOrder}"></td>
+            </tr>
+            <tr>
+                <td>Reorder Level</td>
+                <td th:text="${product.reorderLevel}"></td>
+            </tr>
         </table>
     </div>
 </main>

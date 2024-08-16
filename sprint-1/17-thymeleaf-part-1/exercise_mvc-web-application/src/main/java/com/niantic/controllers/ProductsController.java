@@ -1,6 +1,8 @@
 package com.niantic.controllers;
 
+import com.niantic.models.Category;
 import com.niantic.models.Product;
+import com.niantic.services.CategoryDao;
 import com.niantic.services.ProductDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,13 @@ import java.util.ArrayList;
 public class ProductsController
 {
     private ProductDao productDao = new ProductDao();
+//    private CategoryDao categoryDao = new CategoryDao();
+//
+//    public ArrayList<Category> categories;
+//
+//    {
+//        categories = categoryDao.getAllCategories();
+//    }
 
     @GetMapping("/products")
     public String getAllProducts(Model model, @RequestParam(required = false) String product)
@@ -42,7 +51,7 @@ public class ProductsController
     }
 
     // Add Product
-    @GetMapping("/products/add")
+    @GetMapping("products/add")
     public String addProduct(Model model)
     {
         model.addAttribute("product", new Product());
@@ -50,7 +59,7 @@ public class ProductsController
         return "products/add_edit";
     }
 
-    @PostMapping("products/add")
+    @PostMapping("/products/add")
     public String addProduct(Model model, @ModelAttribute("product") Product product)
     {
         productDao.addProduct(product);
@@ -59,7 +68,8 @@ public class ProductsController
     }
 
     // Edit Product
-    @GetMapping String editProduct(Model model, @PathVariable int id)
+    @GetMapping("/products/{id}/edit")
+    String editProduct(Model model, @PathVariable int id)
     {
         Product product = productDao.getProductById(id);
         model.addAttribute("product", product);
@@ -91,7 +101,7 @@ public class ProductsController
     }
 
     @PostMapping("products/{id}/delete")
-    public String deleteCategory(@PathVariable int id)
+    public String deleteProduct(@PathVariable int id)
     {
         productDao.deleteProduct(id);
 

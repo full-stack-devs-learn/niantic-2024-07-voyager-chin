@@ -61,6 +61,8 @@ Add functionality to the `ProductsController` to display lists of products and t
     - The link should navigate to `http://localhost:8080/products/1` where `1` is the id of the selected category
 
 2. Add an `@GetMapping()` method to handle the `/products?catId=1` path
+    - /products?catId=1 for all products by category
+    - /products/1 for each product detail page
     - Use the ProductDao object to get all products by categoryId
         - add the `products` them to the `model`
     - You will also need a CategoryDao object to get the category by Id
