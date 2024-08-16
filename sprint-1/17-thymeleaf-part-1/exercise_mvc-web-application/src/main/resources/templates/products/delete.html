@@ -24,9 +24,14 @@
     <h2>You are about to delete the following product:</h2>
 
     <table class="table">
-        <tr><th>Id:</th><td th:text="${product.productId}"></td></tr>
+        <tr><th>Product Id:</th><td th:text="${product.productId}"></td></tr>
+        <tr><th>Category Id:</th><td th:text="${product.categoryId}"></td></tr>
         <tr><th>Name:</th><td th:text="${product.productName}"></td></tr>
+        <tr><th>Quantity Per Unit</th><td th:text="${product.quantityPerUnit}"></td></tr>
         <tr><th>Price:</th><td th:text="${#numbers.formatCurrency(product.unitPrice)}"></td></tr>
+        <tr><th>Units in Stock:</th><td th:text="${product.unitsInStock}"></td></tr>
+        <tr><th>Units in Order</th><td th:text="${product.unitsOnOrder}"></td></tr>
+        <tr><th>Reorder Level</th><td th:text="${product.reorderLevel}"></td></tr>
     </table>
 
 </main>
