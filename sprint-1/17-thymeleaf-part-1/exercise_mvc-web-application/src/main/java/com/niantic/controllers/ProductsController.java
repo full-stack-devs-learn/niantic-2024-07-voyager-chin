@@ -14,13 +14,8 @@ import java.util.ArrayList;
 public class ProductsController
 {
     private ProductDao productDao = new ProductDao();
-//    private CategoryDao categoryDao = new CategoryDao();
-//
-//    public ArrayList<Category> categories;
-//
-//    {
-//        categories = categoryDao.getAllCategories();
-//    }
+
+    private CategoryDao categoryDao = new CategoryDao();
 
     @GetMapping("/products")
     public String getAllProducts(Model model, @RequestParam(required = false) String product)
@@ -55,6 +50,7 @@ public class ProductsController
     public String addProduct(Model model)
     {
         model.addAttribute("product", new Product());
+        model.addAttribute("categories", categoryDao.getAllCategories());
         model.addAttribute("action", "add");
         return "products/add_edit";
     }
@@ -73,6 +69,7 @@ public class ProductsController
     {
         Product product = productDao.getProductById(id);
         model.addAttribute("product", product);
+        model.addAttribute("categories", categoryDao.getAllCategories());
         model.addAttribute("action", "edit");
         return "products/add_edit";
     }

@@ -25,8 +25,8 @@
             <div class="mb-3">
                 <label>Category</label>
                 <select class="form-control" th:field="*{categoryId}">
-<!--                    SELECT / OPTION NOT WORKING. NEED FIX: -->
-                    <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryId}"></option>
+<!--                    SELECT / OPTION NOT WORKING. NEED FIX FOR CATEGORY DROPDOWN: -->
+                    <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
                 </select>
             </div>
             <div class="mb-3">
