@@ -5,26 +5,34 @@ Class: Rectangle
     Bug 1:
 
         Describe the bug/error:
+            - getArea() should not return a negative number.
 
         Where was the bug? (function, line number)
+           - The getArea() function on line 42.
 
         What test helped you find the bug?
+           - getArea_shouldReturn_positive()
 
         What did you do to fix the bug?
+           - Added an if statement to return zero(0) if either width or height is less than 0.
 
     Bug 2:
 
         Describe the bug/error:
+            - getPerimeter() does not return the correct calculation of ((2 x width) + (2 x height)).
 
         Where was the bug? (function, line number)
+            - getPerimeter() function on line 57.
 
         What test helped you find the bug?
+            - getPerimeter_shouldReturn_width2PlusHeight2()
 
         What did you do to fix the bug?
+            - updated the calculation to (width * 2) + (height * 2) from width + height;
 
     Bug 3:
 
-        Describe the bug/error:
+        Describe the bug/error: n/a
 
         Where was the bug? (function, line number)
 
