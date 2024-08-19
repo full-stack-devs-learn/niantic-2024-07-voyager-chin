@@ -1,0 +1,110 @@
+Bug Tracker
+
+Class: Rectangle
+
+    Bug 1:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+    Bug 2:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+    Bug 3:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+
+
+
+Class: Quiz
+
+    Bug 1:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+    Bug 2:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+
+*** Optional / Challenge ***
+
+
+
+Class: GameCharacter
+
+    Bug 1:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+    Bug 2:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+
+
+
+Class: Printer
+
+    Bug 1:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
+
+    Bug 2:
+
+        Describe the bug/error:
+
+        Where was the bug? (function, line number)
+
+        What test helped you find the bug?
+
+        What did you do to fix the bug?
