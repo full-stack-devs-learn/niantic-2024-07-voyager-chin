@@ -87,8 +87,8 @@ Be sure to write enough tests to verify the code.
 - The area of the rectangle should be calculated correctly (width x height).
 - The perimeter of the rectangle should be calculated correctly ((2 x width) + (2 x height)).
 - `width` and `height` must be `positive`
-  - If either the `width` or `height` are `zero` or less when the area is calculated a runtime exception should be thrown
-  - If either the `width` or `height` are `zero` or less when the perimeter is calculated a runtime exception should be thrown
+  - If either the `width` or `height` are `zero` or less when the area it should return 0.
+  - If either the `width` or `height` are `zero` or less when the perimeter it should return 0.
 
 
 # Class: The `Quiz` class
