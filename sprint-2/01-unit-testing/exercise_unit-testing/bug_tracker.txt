@@ -48,22 +48,62 @@ Class: Quiz
     Bug 1:
 
         Describe the bug/error:
+                    - The function returns a wrong score percent value of zero(0).
 
-        Where was the bug? (function, line number)
+                Where was the bug? (function, line number)
+                    - getPercent(), line 37
 
-        What test helped you find the bug?
+                What test helped you find the bug?
+                    - getPercentage_shouldCalculate_scorePercentage()
 
-        What did you do to fix the bug?
+                What did you do to fix the bug?
+                    - To fix the bug, the parentheses was added and a double data type was casted to the calculation
+                      which was converted back to int on the return statement.
 
     Bug 2:
 
         Describe the bug/error:
+            - The getLetterGrade() function does not return the correct Letter Grades when tested.
 
         Where was the bug? (function, line number)
+            - getLetterGrade(), line 45-48
 
         What test helped you find the bug?
+            - getLetterGrade_shouldReturn_gradeBasedOnPercent()
 
         What did you do to fix the bug?
+            - Instead of just greater than (>), the comparison was changed to greater than or equal (>=).
+              The lowest value to return the letter grade "D" was changed to 60 instead of 50.
+
+    Bug 3:
+
+        Describe the bug/error:
+            - Possible points must be positive but the function returns a negative value when passed a negative value.
+
+        Where was the bug? (function, line number)
+            - getPossiblePoints, line 21
+
+        What test helped you find the bug?
+            - possiblePoints_shouldBe_positive()
+
+        What did you do to fix the bug?
+            - Added an if statement if possiblePoints is less than zero(0), it will return zero instead of negative value.
+
+    Bug 4:
+
+        Describe the bug/error:
+            - score must be positive but the function returns a negative value when passed a negative value.
+
+        Where was the bug? (function, line number)
+            - setScore(), line 16
+
+        What test helped you find the bug?
+            - setScore_shouldBe_positive()
+
+        What did you do to fix the bug?
+            - Added an if/else statement if score is less than zero(0), it will assign zero value instead of negative value.
+
+
 
 
 *** Optional / Challenge ***
