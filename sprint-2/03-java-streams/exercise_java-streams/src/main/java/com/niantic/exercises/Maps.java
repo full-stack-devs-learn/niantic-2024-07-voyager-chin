@@ -18,7 +18,13 @@ public class Maps
      */
     public List<String> mapCompanyNames(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var companyNames = lineItems.stream()
+                                    .map(lineItem -> lineItem.getCompanyName())
+                                    .distinct()
+                                    .sorted()
+                                    .toList();
+
+        return companyNames;
     }
 
     /*
@@ -31,7 +37,13 @@ public class Maps
      */
     public List<String> mapCategories(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var categoryNames = lineItems.stream()
+                                     .map(lineItem -> lineItem.getCategoryName())
+                                     .distinct()
+                                     .sorted()
+                                     .toList();
+
+        return categoryNames;
     }
 
     /*
@@ -44,7 +56,13 @@ public class Maps
      */
     public List<String> mapProducts(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var productNames = lineItems.stream()
+                                    .map(lineItem -> lineItem.getProductName())
+                                    .distinct()
+                                    .sorted()
+                                    .toList();
+
+        return productNames;
     }
 
     /*
@@ -57,7 +75,13 @@ public class Maps
      */
     public List<String> mapYears(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var years = lineItems.stream()
+                .map(lineItem -> String.valueOf(lineItem.getOrderDate().getYear()))
+                .distinct()
+                .sorted()
+                .toList();
+
+        return years;
     }
 
     /*
@@ -70,6 +94,12 @@ public class Maps
      */
     public List<String> mapOrderIds(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var orderIds = lineItems.stream()
+                .map(lineItem -> String.valueOf(lineItem.getOrderId()))
+                .distinct()
+                .sorted()
+                .toList();
+
+        return orderIds;
     }
 }
