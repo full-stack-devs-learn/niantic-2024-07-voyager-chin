@@ -15,7 +15,11 @@ public class Filters
      */
     public List<LineItem> filterByCompanyName(List<LineItem> lineItems, String companyName)
     {
-        return new ArrayList<>();
+        var filtered = lineItems.stream()
+                                .filter(lineItem -> lineItem.getCompanyName().toLowerCase().contains(companyName.toLowerCase()))
+                                .toList();
+
+        return filtered;
     }
 
     /*
@@ -25,7 +29,11 @@ public class Filters
      */
     public List<LineItem> filterByCategory(List<LineItem> lineItems, String categoryName)
     {
-        return new ArrayList<>();
+        var filtered = lineItems.stream()
+                                .filter(lineItem -> lineItem.getCategoryName().toLowerCase().contains(categoryName.toLowerCase()))
+                                .toList();
+
+        return filtered;
     }
 
     /*
@@ -35,7 +43,11 @@ public class Filters
      */
     public List<LineItem> filterByProduct(List<LineItem> lineItems, String productName)
     {
-        return new ArrayList<>();
+        var filtered = lineItems.stream()
+                                .filter(lineItem -> lineItem.getProductName().toLowerCase().contains(productName.toLowerCase()))
+                                .toList();
+
+        return filtered;
     }
 
     /*
@@ -44,7 +56,13 @@ public class Filters
      */
     public List<LineItem> filterByYear(List<LineItem> lineItems, int year)
     {
-        return new ArrayList<>();
+        Integer y = year;
+
+        var filtered = lineItems.stream()
+                                .filter(lineItem -> lineItem.getOrderDate().toString().startsWith(y.toString()))
+                                .toList();
+
+        return filtered;
     }
 
 
@@ -54,6 +72,10 @@ public class Filters
      */
     public List<LineItem> filterByOrderId(List<LineItem> lineItems, int orderId)
     {
-        return new ArrayList<>();
+        var filtered = lineItems.stream()
+                                .filter(lineItem -> lineItem.getOrderId() == orderId)
+                                .toList();
+
+        return filtered;
     }
 }
