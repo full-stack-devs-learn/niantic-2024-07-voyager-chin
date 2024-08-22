@@ -76,10 +76,10 @@ public class Maps
     public List<String> mapYears(List<LineItem> lineItems)
     {
         var years = lineItems.stream()
-                .map(lineItem -> String.valueOf(lineItem.getOrderDate().getYear()))
-                .distinct()
-                .sorted()
-                .toList();
+                             .map(lineItem -> String.valueOf(lineItem.getOrderDate().getYear()))
+                             .distinct()
+                             .sorted()
+                             .toList();
 
         return years;
     }
@@ -95,10 +95,10 @@ public class Maps
     public List<String> mapOrderIds(List<LineItem> lineItems)
     {
         var orderIds = lineItems.stream()
-                .map(lineItem -> String.valueOf(lineItem.getOrderId()))
-                .distinct()
-                .sorted()
-                .toList();
+                                .map(lineItem -> String.valueOf(lineItem.getOrderId()))
+                                .distinct()
+                                .sorted()
+                                .toList();
 
         return orderIds;
     }
