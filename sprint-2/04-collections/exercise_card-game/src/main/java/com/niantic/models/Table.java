@@ -16,7 +16,6 @@ public class Table
 
     private Penalty penalty;
     public ArrayList<Player> players;
-//    public Player player;
 
 
     // 4 Rows of Cards in Table
@@ -136,17 +135,11 @@ public class Table
 
         var sortedEndCardValues = endCards.stream().map(Card::getValue).sorted().toList();
 
-        // Lowest value card in the table
+        // Lowest value of end card in the table
         int lowestValueCard = sortedEndCardValues.getFirst();
-
-//        Card lowerCard;
-//        Card higherCard;
-//        Player lowerCardPlayer;
-//        Player higherCardPlayer;
 
         int botCardValue = botCard.getValue();
         int playerCardValue = playerCard.getValue();
-
 
         // Lower card value will be put on the table rows first
         if (botCardValue < playerCardValue)
@@ -165,12 +158,12 @@ public class Table
         }
 
         // Get total value of each row
-        int totalValueRowA = rowA.stream().map( card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
-        int totalValueRowB = rowB.stream().map( card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
-        int totalValueRowC = rowC.stream().map( card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
-        int totalValueRowD = rowD.stream().map( card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
+        int totalValueRowA = rowA.stream().map(card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
+        int totalValueRowB = rowB.stream().map(card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
+        int totalValueRowC = rowC.stream().map(card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
+        int totalValueRowD = rowD.stream().map(card -> card.getValue()).reduce(0, (temp, value) -> temp + value);
 
-        // Get the last value of list (using .lastElement()?) and find row nearest to the player card value
+        // Put played cards in an arraylist
         ArrayList<Card> playedCards = new ArrayList<>();
         playedCards.add(lowerCard);
         playedCards.add(higherCard);
@@ -181,27 +174,26 @@ public class Table
             if (card.getValue() < lowestValueCard)
             {
                 ArrayList<Card> leastPenaltyRow = rowA;
+                int leastPenaltyValue = totalValueRowA;
                 String row = "A";
 
                 // LOOK FOR ROW WITH LEAST PENALTY
-                if (totalValueRowB < totalValueRowA)
+                if (totalValueRowB < leastPenaltyValue)
                 {
                     leastPenaltyRow = rowB;
                     row = "B";
                 }
-                if (totalValueRowC < totalValueRowB)
+                if (totalValueRowC < leastPenaltyValue)
                 {
                     leastPenaltyRow = rowC;
                     row = "C";
                 }
-                if (totalValueRowD < totalValueRowC)
+                if (totalValueRowD < leastPenaltyValue)
                 {
                     leastPenaltyRow = rowD;
                     row = "D";
                 }
 
-                // Get end card with lowest value:
-                lowestValueCard = card.getValue();
                 // get player that will receive penalty
                 // give all cards in selected row to Penalty
                 // use player card to restart the row
@@ -225,6 +217,9 @@ public class Table
                 // add to row
                 leastPenaltyRow.add(card);
 
+                // Update with lowest value:
+                lowestValueCard = card.getValue();
+
             }
             else // place card on the correct row
             {
@@ -237,27 +232,37 @@ public class Table
                 int differenceRowC = card.getValue() - rowC.getLast().getValue();
                 int differenceRowD = card.getValue() - rowD.getLast().getValue();
 
+                int lowestDifference = differenceRowD;
+
                 // FIND CORRECT ROW
-                if (card.getValue() > rowA.getLast().getValue() && differenceRowA < differenceRowD && differenceRowA > 0)
+                //if (card.getValue() > rowA.getLast().getValue() && differenceRowA < differenceRowD && differenceRowA > 0)
+                if (differenceRowA < lowestDifference && differenceRowA > 0)
                 {
                     correctRow = rowA;
                     row = "A";
+                    lowestDifference = differenceRowA;
                 }
-                if (card.getValue() > rowB.getLast().getValue() && differenceRowB < differenceRowA && differenceRowB > 0)
+                // if (card.getValue() > rowB.getLast().getValue() && differenceRowB < differenceRowA && differenceRowB > 0)
+                if (differenceRowB < lowestDifference && differenceRowB > 0)
                 {
                     correctRow = rowB;
                     row = "B";
+                    lowestDifference = differenceRowB;
                 }
-                if (card.getValue() > rowC.getLast().getValue() && differenceRowC < differenceRowB && differenceRowC > 0)
+                // if (card.getValue() > rowC.getLast().getValue() && differenceRowC < differenceRowB && differenceRowC > 0)
+                if (differenceRowC < lowestDifference && differenceRowC > 0)
                 {
                     correctRow = rowC;
                     row = "C";
+                    lowestDifference = differenceRowC;
                 }
-                if (card.getValue() > rowD.getLast().getValue() && differenceRowD < differenceRowC && differenceRowD > 0)
-                {
-                    correctRow = rowD;
-                    row = "D";
-                }
+                // if (card.getValue() > rowD.getLast().getValue() && differenceRowD < differenceRowC && differenceRowD > 0)
+//                if (differenceRowD < lowestDifference && differenceRowD > 0)
+//                {
+//                    correctRow = rowD;
+//                    row = "D";
+//                    lowestDifference = differenceRowD;
+//                }
 
                 // if correctRow already have 5 cards, player gets penalty cards
                 if (correctRow.size() == 5)

@@ -75,7 +75,7 @@ public class CardGameApplication
 
     private void playHands()
     {
-        for (int i = 0; i < 10; i++) // 10 rounds
+        for (int i = 0; i < 10; i++) // 10 rounds (1 round for each player card in hand)
         {
             Card botCard = new Card(0);
             Card playerCard = new Card(0);
@@ -96,18 +96,12 @@ public class CardGameApplication
                     Hand hand = player.getHand();
                     ArrayList<Card> cards = hand.getCards();
 
-                    Card card = cards.get(0); // bot defaults to getting first card from hand (can also be the highest value card for more difficulty)
+                    Card card = cards.get(0); // bot defaults to getting first card from hand
 
                     botCard = player.playCardFromHand(card); // returns a card removed from hand
 
                     // add to table played card
                     table.playedCards(player, botCard);
-
-//                    // declare which player played which card to table
-//                    table.playedCards(player, card);
-
-//                    // add player back to queue
-//                    queuedPlayers.offer(player);
 
                 }
                 else
@@ -128,8 +122,6 @@ public class CardGameApplication
                         Hand hand = player.getHand();
                         ArrayList<Card> cards = hand.getCards();
 
-                        // convert response to card
-//                        Card card = new Card(Integer.parseInt(response));
                         // convert response to number
                         int intResponse = Integer.parseInt(response);
 
@@ -158,6 +150,7 @@ public class CardGameApplication
 
                             // add to table played card
                             table.playedCards(player, playerCard);
+                            System.out.println("PLAYER TURNS:");
                             System.out.println(player.getName() + " placed a card on the table.");
                             System.out.println(players.get(0).getName() + " placed a card on the table.");
 
@@ -189,28 +182,16 @@ public class CardGameApplication
                 // (bot player can default to taking the first row OR row with fewest points)
                 // if row size is < 5: add card, else: take all table row cards then add card to same row
 
-
-
-
-    //            if(response.equalsIgnoreCase("h"))
-    //            {
-    //                // deal another card
-    //                Card card = deck.takeCard();
-    //                player.dealTo(card);
-    //
-    //                if(player.getHandValue() <= 21)
-    //                {
-    //                    // add player back to the queue
-    //                    queuedPlayers.offer(player);
-    //                }
-    //            }
             }
 
-            System.out.println("CARD REVEAL:");
+            System.out.println("CARD REVEAL: ");
             displayPlayedCards(players.get(0), botCard);
             displayPlayedCards(players.get(1), playerCard);
+
+            System.out.println("ADD CARD TO TABLE ROW: Card with lower value is placed on the correct row first. ");
             table.placeCardsToRow();
 
+            // Display updated table
             UserInterface.displayTableCards(table);
 
             // add player back to queue
@@ -235,7 +216,7 @@ public class CardGameApplication
         {
             winner = players.get(0);
         }
-        
+
     }
 
     // <editor-fold desc="Helpers">

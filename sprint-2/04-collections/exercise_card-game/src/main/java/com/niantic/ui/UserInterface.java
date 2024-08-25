@@ -93,7 +93,7 @@ public class UserInterface
     // display penalty cards taken
     public static void displayPenaltyCardsTaken(Player player, String row)
     {
-        System.out.println(player.getName() + " has taken penalty cards from Row " + row);
+        System.out.println(player.getName() + " has taken penalty cards from Row " + row + ".");
     }
 
     // display played cards
@@ -108,23 +108,6 @@ public class UserInterface
     {
         System.out.println(player.getName() + " card " + card.getValue() + " was added to Row " + row);
     }
-
-
-//    public static void displayAllPlayersCards(ArrayList<Player> players)
-//    {
-//        System.out.println("All Players");
-//        System.out.println("-".repeat(30));
-//        for (Player player : players)
-//        {
-//            System.out.println(player.getName() + ": " + player.getHandValue());
-////            for (Card card : player.getHand().getCards())
-////            {
-////                System.out.println("  " + card.getColor() + " " + card.getValue());
-////            }
-//            System.out.println();
-//        }
-//    }
-
 
     // Ask user name
 
