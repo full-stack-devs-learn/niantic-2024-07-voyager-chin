@@ -1,9 +1,12 @@
 package com.niantic.models;
 
+import java.util.ArrayList;
+
 public class Player
 {
     private String name;
     private Hand hand;
+    private Penalty penalty;
 
     public Player(String name)
     {
@@ -14,6 +17,11 @@ public class Player
     public String getName()
     {
         return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
     public void dealTo(Card card)
@@ -29,5 +37,23 @@ public class Player
     public Hand getHand()
     {
         return hand;
+    }
+
+    public Card playCardFromHand(Card card)
+    {
+        hand.playCardFromHand(card);
+        return card;
+    }
+
+    public ArrayList<Card> getPenaltyCards(ArrayList<Card> cards)
+    {
+        penalty.getPenaltyCards(cards);
+        return cards;
+    }
+
+    public int getPenaltyPoints()
+    {
+        int penaltyPoints = penalty.getPenaltyPoints();
+        return penaltyPoints;
     }
 }
