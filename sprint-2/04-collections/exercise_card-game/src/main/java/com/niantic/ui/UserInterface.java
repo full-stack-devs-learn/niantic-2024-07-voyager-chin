@@ -72,6 +72,7 @@ public class UserInterface
         System.out.print("Hand Cards: ");
         var hand = player.getHand();
         var cards = hand.getCards();
+
         cards.stream().forEach(card -> System.out.print(card.getValue() + " | "));
         System.out.println();
         System.out.println("-".repeat(70));
@@ -89,6 +90,24 @@ public class UserInterface
         System.out.println(ColorCodes.YELLOW + "*****************************************" + ColorCodes.RESET);
     }
 
+    // display penalty cards taken
+    public static void displayPenaltyCardsTaken(Player player, String row)
+    {
+        System.out.println(player.getName() + " has taken penalty cards from Row " + row);
+    }
+
+    // display played cards
+    public static void displayPlayedCards(Player player, Card card)
+    {
+
+        System.out.println(player.getName() + " played card: " + card.getValue());
+    }
+
+    // display which card was placed to which row
+    public static void displayCardPlacedToRow(Player player, Card card, String row)
+    {
+        System.out.println(player.getName() + " card " + card.getValue() + " was added to Row " + row);
+    }
 
 
 //    public static void displayAllPlayersCards(ArrayList<Player> players)

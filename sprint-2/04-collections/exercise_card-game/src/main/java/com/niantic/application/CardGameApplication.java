@@ -5,6 +5,8 @@ import com.niantic.ui.UserInterface;
 
 import java.util.*;
 
+import static com.niantic.ui.UserInterface.displayPlayedCards;
+
 public class CardGameApplication
 {
     Deck deck = new Deck();
@@ -75,14 +77,17 @@ public class CardGameApplication
     {
         for (int i = 0; i < 10; i++) // 10 rounds
         {
+            Card botCard = new Card(0);
+            Card playerCard = new Card(0);
+
+            // Each turn, each player will select and show their cards
             Queue<Player> queuedPlayers = new LinkedList<>(players);
 
             while (!queuedPlayers.isEmpty())
             {
+
                 var player = queuedPlayers.poll();
     //            UserInterface.displayPlayerCards(player);
-                Card botCard;
-                Card playerCard;
 
 
                 if (player.getName().equalsIgnoreCase("-Ultron-"))
@@ -97,10 +102,12 @@ public class CardGameApplication
 
                     // add to table played card
                     table.playedCards(player, botCard);
-                    System.out.println(player.getName() + " placed a card on the table.");
 
-                    // add player back to queue
-                    queuedPlayers.offer(player);
+//                    // declare which player played which card to table
+//                    table.playedCards(player, card);
+
+//                    // add player back to queue
+//                    queuedPlayers.offer(player);
 
                 }
                 else
@@ -108,12 +115,12 @@ public class CardGameApplication
                     // Display player hand cards
                     UserInterface.displayHandCards(players.get(1)); // displays card of user playing the game
                     // PUT A WHILE LOOP WHILE RESPONSE IS EMPTY
-                    String response = "";
+                    Boolean isValidResponse = false;
 
-                    while(response.isEmpty())
+                    while(!isValidResponse)
                     {
-                        System.out.println("Select a number card to play: ");
-                        response = input.nextLine()
+                        System.out.print("Select a number card to play: ");
+                        String response = input.nextLine()
                                 .strip()
                                 .toLowerCase();
 
@@ -122,33 +129,50 @@ public class CardGameApplication
                         ArrayList<Card> cards = hand.getCards();
 
                         // convert response to card
-                        Card card = new Card(Integer.parseInt(response));
+//                        Card card = new Card(Integer.parseInt(response));
+                        // convert response to number
+                        int intResponse = Integer.parseInt(response);
 
-                        // find index of selected card
-                        // find card based on index
-                        int index = cards.indexOf(card);
+                        Boolean isCardFound = false;
+                        int index = -1;
 
                         // Verify if response exists in hand
-                        if (index >= 0)
+                        for(Card card : cards)
+                        {
+                            if (card.getValue() == intResponse)
+                            {
+                            // find index of selected card
+                                index = cards.indexOf(card);
+                                isCardFound = true;
+
+                            }
+                        }
+
+                        // find card based on index
+                        if (isCardFound)
                         {
                             // remove card from hand
-                            card = cards.get(index); // put index of selected card
+                            Card card = cards.get(index); // put index of selected card
 
                             playerCard = player.playCardFromHand(card); // returns a card removed from hand
 
                             // add to table played card
                             table.playedCards(player, playerCard);
-
                             System.out.println(player.getName() + " placed a card on the table.");
+                            System.out.println(players.get(0).getName() + " placed a card on the table.");
 
-                            // ADD BACK PLAYER TO QUEUE
-                            queuedPlayers.offer(player);
+//                            // declare which player played which card to table
+//                            table.playedCards(player, card);
+
+//                            // ADD BACK PLAYER TO QUEUE
+//                            queuedPlayers.offer(player);
+                            isValidResponse = true;
                         }
                         else
                         {
                             System.out.println();
                             System.out.println("Sorry, you entered an invalid number.");
-                            System.out.println("Please enter a valid number from your hand cards: ");
+                            System.out.println("Please enter a valid number from your hand cards.");
     //                        response = input.nextLine()
     //                                .strip()
     //                                .toLowerCase();
@@ -156,6 +180,16 @@ public class CardGameApplication
                     }
 
                 }
+
+                // PROCESS PLAYED CARDS:
+                // Lower card value will be put on the table rows first
+                // Get the last value of Stack (using .lastElement()?) and find row nearest to the player card value
+                // compare all row lastElement() to player card
+                // if player card is lower than all lastElement() cards, player will choose which row to take
+                // (bot player can default to taking the first row OR row with fewest points)
+                // if row size is < 5: add card, else: take all table row cards then add card to same row
+
+
 
 
     //            if(response.equalsIgnoreCase("h"))
@@ -171,6 +205,18 @@ public class CardGameApplication
     //                }
     //            }
             }
+
+            System.out.println("CARD REVEAL:");
+            displayPlayedCards(players.get(0), botCard);
+            displayPlayedCards(players.get(1), playerCard);
+            table.placeCardsToRow();
+
+            UserInterface.displayTableCards(table);
+
+            // add player back to queue
+            queuedPlayers.offer(players.get(0));
+            queuedPlayers.offer(players.get(1));
+
         }
     }
 
@@ -179,23 +225,17 @@ public class CardGameApplication
         int botPenalty = players.get(0).getPenaltyPoints();
         int playerPenalty = players.get(1).getPenaltyPoints();
 
+        // If bot have higher penalty points than player, player wins
         if (botPenalty > playerPenalty)
-        {
-            winner = players.get(0);
-        }
-        else
         {
             winner = players.get(1);
         }
-
-//        for (Player player: players)
-//        {
-//            int points = player.getPenaltyPoints();
-//            if(points > winner.getHandValue() && points <= 21 )
-//            {
-//                winner = player;
-//            }
-//        }
+        else
+        // If player have higher penalty points than bot, bot wins
+        {
+            winner = players.get(0);
+        }
+        
     }
 
     // <editor-fold desc="Helpers">
@@ -220,13 +260,6 @@ public class CardGameApplication
 
     // </editor-fold>
 
-    // Each turn, each player will select and show their cards
-    // Lower card value will be put on the table rows first
-    // Get the last value of Stack (using .lastElement()?) and find row nearest to the player card value
-        // compare all row lastElement() to player card
-        // if player card is lower than all lastElement() cards, player will choose which row to take
-        // (bot player can default to taking the first row OR row with fewest points)
-    // if row size is < 5: add card, else: take all table row cards then add card to same row
 
 
 

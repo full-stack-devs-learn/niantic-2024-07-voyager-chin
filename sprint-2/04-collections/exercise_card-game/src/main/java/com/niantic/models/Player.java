@@ -7,12 +7,23 @@ public class Player
     private String name;
     private Hand hand;
     private Penalty penalty;
+    private Card card;
+
+    public Player() {
+    }
 
     public Player(String name)
     {
         this.name = name;
         hand = new Hand();
+        penalty = new Penalty();
     }
+
+    public Player getPlayer(Player player)
+    {
+        return player;
+    }
+
 
     public String getName()
     {
@@ -45,10 +56,10 @@ public class Player
         return card;
     }
 
-    public ArrayList<Card> getPenaltyCards(ArrayList<Card> cards)
+    public void getPenaltyCards(ArrayList<Card> cards)
     {
         penalty.getPenaltyCards(cards);
-        return cards;
+//        return cards;
     }
 
     public int getPenaltyPoints()
