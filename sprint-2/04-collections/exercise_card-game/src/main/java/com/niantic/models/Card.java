@@ -15,12 +15,4 @@ public class Card
     {
         return number;
     }
-
-    // cards
-//    private static final ArrayList<Integer> gameCards = new ArrayList<Integer>();
-//    gameCards.add(1);
-//    gameCards.add(2);
-
-
-
 }

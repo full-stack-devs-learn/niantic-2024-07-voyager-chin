@@ -9,8 +9,7 @@ public class Player
     private Penalty penalty;
     private Card card;
 
-    public Player() {
-    }
+    public Player() {}
 
     public Player(String name)
     {
@@ -23,7 +22,6 @@ public class Player
     {
         return player;
     }
-
 
     public String getName()
     {
@@ -59,7 +57,6 @@ public class Player
     public void getPenaltyCards(ArrayList<Card> cards)
     {
         penalty.getPenaltyCards(cards);
-//        return cards;
     }
 
     public int getPenaltyPoints()

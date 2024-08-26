@@ -10,13 +10,12 @@ public class Table
 {
     // Table can get initial cards and display it
     // Organize 4 rows
-    // Can collect play cards and put in rows
+    // Collect play cards and put in rows
     // Can reset rows
     // Can convert cards values to penalty points
 
     private Penalty penalty;
     public ArrayList<Player> players;
-
 
     // 4 Rows of Cards in Table
     ArrayList<Card> rowA = new ArrayList<>();
@@ -24,7 +23,7 @@ public class Table
     ArrayList<Card> rowC = new ArrayList<>();
     ArrayList<Card> rowD = new ArrayList<>();
 
-    // Played Cards per turn
+    // Player Cards per turn
     Card botCard = new Card(0);
     Card playerCard = new Card(0);
 
@@ -36,11 +35,8 @@ public class Table
     Player lowerCardPlayer;
     Player higherCardPlayer;
 
-
-
     // Parameterless
-    public Table() {
-    }
+    public Table() {}
 
     // Parameterized
     public Table(ArrayList<Card> rowA, ArrayList<Card> rowB, ArrayList<Card> rowC, ArrayList<Card> rowD) {
@@ -55,25 +51,6 @@ public class Table
     public Card getRowEndCardB() { return rowB.getLast(); }
     public Card getRowEndCardC() { return rowC.getLast(); }
     public Card getRowEndCardD() { return rowA.getLast(); }
-
-//    public ArrayList<Card> getEndCards(){
-//
-//        ArrayList<Card> endCards = new ArrayList<Card>();
-//
-//        var cardRowA = rowA.get(rowA.size() - 1);
-//        endCards.add(cardRowA);
-//
-//        var cardRowB = rowB.get(rowB.size() - 1);
-//        endCards.add(cardRowB);
-//
-//        var cardRowC = rowC.get(rowC.size() - 1);
-//        endCards.add(cardRowC);
-//
-//        var cardRowD = rowD.get(rowD.size() - 1);
-//        endCards.add(cardRowD);
-//
-//        return endCards;
-//    }
 
     // Getters and Setters
     public ArrayList<Card> getRowA() {
@@ -201,13 +178,11 @@ public class Table
                 if (card == lowerCard)
                 {
                     givePenaltyToPlayer(lowerCardPlayer, leastPenaltyRow);
-//                    lowerCardPlayer.getPenaltyCards(leastPenaltyRow);
                     displayPenaltyCardsTaken(lowerCardPlayer, row);
                 }
                 else
                 {
                     givePenaltyToPlayer(higherCardPlayer, leastPenaltyRow);
-//                    higherCardPlayer.getPenaltyCards(leastPenaltyRow);
                     displayPenaltyCardsTaken(higherCardPlayer, row);
                 }
 
@@ -217,59 +192,54 @@ public class Table
                 // add to row
                 leastPenaltyRow.add(card);
 
-                // Update with lowest value:
+                // Update lowest value:
                 lowestValueCard = card.getValue();
-
             }
             else // place card on the correct row
             {
                 ArrayList<Card> correctRow = rowD;
                 String row = "D";
 
-               // get the difference (lowerCard.getValue() minus each end card value)
+                // get the difference (lowerCard.getValue() minus each end card value)
                 int differenceRowA = card.getValue() - rowA.getLast().getValue();
                 int differenceRowB = card.getValue() - rowB.getLast().getValue();
                 int differenceRowC = card.getValue() - rowC.getLast().getValue();
                 int differenceRowD = card.getValue() - rowD.getLast().getValue();
 
-                int lowestDifference = differenceRowD;
+                int lowestDifference = 300;
 
                 // FIND CORRECT ROW
-                //if (card.getValue() > rowA.getLast().getValue() && differenceRowA < differenceRowD && differenceRowA > 0)
                 if (differenceRowA < lowestDifference && differenceRowA > 0)
                 {
                     correctRow = rowA;
                     row = "A";
                     lowestDifference = differenceRowA;
                 }
-                // if (card.getValue() > rowB.getLast().getValue() && differenceRowB < differenceRowA && differenceRowB > 0)
                 if (differenceRowB < lowestDifference && differenceRowB > 0)
                 {
                     correctRow = rowB;
                     row = "B";
                     lowestDifference = differenceRowB;
                 }
-                // if (card.getValue() > rowC.getLast().getValue() && differenceRowC < differenceRowB && differenceRowC > 0)
                 if (differenceRowC < lowestDifference && differenceRowC > 0)
                 {
                     correctRow = rowC;
                     row = "C";
                     lowestDifference = differenceRowC;
                 }
-                // if (card.getValue() > rowD.getLast().getValue() && differenceRowD < differenceRowC && differenceRowD > 0)
-//                if (differenceRowD < lowestDifference && differenceRowD > 0)
-//                {
-//                    correctRow = rowD;
-//                    row = "D";
-//                    lowestDifference = differenceRowD;
-//                }
+                if (differenceRowD < lowestDifference && differenceRowD > 0)
+                {
+                    correctRow = rowD;
+                    row = "D";
+                    lowestDifference = differenceRowD;
+                }
 
                 // if correctRow already have 5 cards, player gets penalty cards
                 if (correctRow.size() == 5)
                 {
                     // move cards to player penalty
                     // find the player who played the card
-                    // Get card value and match to player?
+                    // Get card value and match to player
                     if (card == lowerCard)
                     {
                         lowerCardPlayer.getPenaltyCards(correctRow);
@@ -302,23 +272,7 @@ public class Table
                 }
             }
         }
-
-        // compare all row lastElement() to player card
-        // (bot player can default to taking the first row OR row with fewest points)
-        // if row size is < 5: add card, else: take all table row cards then add card to same row
-
     }
-
-//    public ArrayList<Card> givePenaltyToPlayer(ArrayList<Card> cards)
-//    {
-//        return cards;
-//    }
-//    public Card playCardFromHand(Card card)
-//    {
-//        hand.playCardFromHand(card);
-//        return card;
-//    }
-
 
     // Get row count A-D
     public int getRowSizeA() { return rowA.size(); }
@@ -328,12 +282,6 @@ public class Table
     public int getRowSizeC() { return rowC.size(); }
 
     public int getRowSizeD() { return rowD.size(); }
-
-    // Add single card to rows A-D
-    // Each turn will add each player card to the rows, lowest card value will be added first
-
-    // Removed cards need to be added to Penalty model
-
 
     // Remove all cards each row A-D
     public void resetRowA() { rowA.clear(); }
@@ -348,8 +296,4 @@ public class Table
         player.getPenaltyCards(cards);
         return cards;
     }
-
-
-
-
 }

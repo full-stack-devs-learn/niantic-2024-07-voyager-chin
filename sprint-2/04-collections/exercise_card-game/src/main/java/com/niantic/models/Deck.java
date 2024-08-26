@@ -12,6 +12,7 @@ public class Deck
         // build the deck of cards
         cards = new ArrayList<>();
 
+        // Card numbers for 2 player game
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
 
         for (int number: numbers)
@@ -19,16 +20,6 @@ public class Deck
             Card card = new Card(number);
             cards.add(card);
         }
-
-//        String[] colors = {"Red", "Blue", "Green", "Yellow"};
-//        for(String color : colors)
-//        {
-//            for(int number : numbers)
-//            {
-//                Card card = new Card(color,number);
-//                cards.add(card);
-//            }
-//        }
     }
 
     public int getCardCount()

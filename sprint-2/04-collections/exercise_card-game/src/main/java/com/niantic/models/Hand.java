@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Hand
 {
-    // Hand can collect  cards and play cards, also contain value of cards
+    // Hand can collect cards and play cards, also contain value of cards
 
     private final ArrayList<Card> cards = new ArrayList<>();
 

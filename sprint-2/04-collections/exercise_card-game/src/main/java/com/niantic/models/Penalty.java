@@ -18,23 +18,6 @@ public class Penalty
         }
     }
 
-    // Collect dealt cards (Add penalty cards to PenaltyCards ArrayList
-//    public void addToBotPenalty(ArrayList<Card> cards)
-//    {
-//        for (Card card : cards)
-//        {
-//            botPenaltyCards.add(card);
-//        }
-//    }
-//
-//    public void addToPlayerPenalty(ArrayList<Card> cards)
-//    {
-//        for (Card card : cards)
-//        {
-//            playerPenaltyCards.add(card);
-//        }
-//    }
-
     // Get penalty for bot
     public int getTotalBotPenalties()
     {
@@ -74,7 +57,4 @@ public class Penalty
         }
         return total;
     }
-
-
-
 }

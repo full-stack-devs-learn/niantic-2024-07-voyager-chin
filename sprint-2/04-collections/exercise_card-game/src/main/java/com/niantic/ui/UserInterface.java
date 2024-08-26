@@ -1,27 +1,47 @@
 package com.niantic.ui;
 
 import com.niantic.models.Card;
-import com.niantic.models.Hand;
 import com.niantic.models.Player;
 import com.niantic.models.Table;
 
-import java.util.Scanner;
-import java.util.stream.Stream;
-
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class UserInterface
 {
-//    static Table table = new Table();
+
+    public static void displayWelcome()
+    {
+        System.out.println();
+        System.out.println("----------------- Welcome to -----------------");
+        System.out.println("\n" +
+                "    __    _   _ _                     _   _ \n" +
+                "   / /   | \\ | (_)                   | | | |\n" +
+                "  / /_   |  \\| |_ _ __ ___  _ __ ___ | |_| |\n" +
+                " | '_ \\  | . ` | | '_ ` _ \\| '_ ` _ \\| __| |\n" +
+                " | (_) | | |\\  | | | | | | | | | | | | |_|_|\n" +
+                "  \\___/  |_| \\_|_|_| |_| |_|_| |_| |_|\\__(_)\n" +
+                "                                            \n" +
+                "                                            \n");
+        System.out.println("-------------- Lite Version 1.0 --------------");
+        System.out.println();
+        System.out.println("Instructions:");
+        System.out.println("     Setup: Each player will draw 10 cards to their hand. There will be 4 starting cards on the table.\n" +
+                "     Play a Card: On your turn, place a card from your hand onto one of the game rows according to the rules.\n" +
+                "     The card must be put on a row where the latest card is lower than the played card.\n" +
+                "     If multiple rows have the latest card lower to the played card, the card must be put on the row where the latest card is the closest to the played card (the highest of the lower cards).\n" +
+                "     Avoid Rows with 5 cards: Try not to place your card to rows that will cause you to pick up cards from the rows.\n" +
+                "     If your card is lower than ALL the end cards, you are required to take ALL cards in the row that is automatically selected to have the lowest penalty points.Then place your card to restart the row.\n" +
+                "     Score Points: The goal is to minimize your score by making strategic moves and avoiding penalties.\n" +
+                "     End of Game: The game ends when the hand is empty, and the player with the lowest penalty score wins.\n" +
+                "     For more details: You may visit https://boardgamemanuals.fandom.com/wiki/6_Nimmt!");
+    }
 
 
     public static void displayTableCards(Table table)
     {
         System.out.println("-".repeat(70));
-        System.out.println("  Table Cards  ");
+        System.out.println("                      Table Cards                      ");
         System.out.println("-  ".repeat(24));
-//        System.out.println();
 
         // ROW A
         System.out.print(" A: ");
@@ -57,10 +77,6 @@ public class UserInterface
         for (Player player : players)
         {
             System.out.println(player.getName() + ": " + player.getHandValue());
-//            for (Card card : player.getHand().getCards())
-//            {
-//                System.out.println("  " + card.getColor() + " " + card.getValue());
-//            }
             System.out.println();
         }
     }
@@ -79,21 +95,25 @@ public class UserInterface
 
     }
 
-    // Get user input for number and row to play
-
-
     public static void displayWinner(Player winner)
     {
         System.out.println();
         System.out.println(ColorCodes.YELLOW + "*****************************************" + ColorCodes.RESET);
         System.out.println("           WINNER: " + winner.getName());
         System.out.println(ColorCodes.YELLOW + "*****************************************" + ColorCodes.RESET);
+        System.out.println();
+        System.out.println("Thanks for playing!");
+    }
+
+    public static void displayFinalScore(Player player)
+    {
+        System.out.println(player.getName() + " collected " + player.getPenaltyPoints() + " penalty points.");
     }
 
     // display penalty cards taken
     public static void displayPenaltyCardsTaken(Player player, String row)
     {
-        System.out.println(player.getName() + " has taken penalty cards from Row " + row + ".");
+        System.out.println(player.getName() + " took penalty cards from Row " + row + ".");
     }
 
     // display played cards
@@ -108,19 +128,4 @@ public class UserInterface
     {
         System.out.println(player.getName() + " card " + card.getValue() + " was added to Row " + row);
     }
-
-    // Ask user name
-
-    // Instructions
-    // Setup: Each player will draw 10 cards to their hand. There will be 4 starting card on the table.
-    // Play a Card: On your turn, place a card from your hand onto one of the game rows according to the rules.
-        // -- Choose card
-            // -- Display user card and bot card
-        // -- Choose row
-        // -- Check if row has 5 cards, take
-    // Avoid Rows with 5 cards: Be careful not to place your card to rows that will cause you to pick up cards from the rows.
-    // NOTE: If your card is lower than ALL the end cards, you are required to take ALL cards in any row and place your card to start a new row.
-    // Score Points: The goal is to minimize your score by making strategic moves and avoiding penalties.
-    // End of Game: The game ends when the hand is empty, and the player with the lowest score wins.
-    // For more details: You may visit https://boardgamemanuals.fandom.com/wiki/6_Nimmt!
 }
