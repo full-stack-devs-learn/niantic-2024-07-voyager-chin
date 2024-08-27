@@ -4,7 +4,14 @@
 -- (Use the customer_orders view)
 
 -- (6 rows)
+USE northwind;
 
+SELECT company_name
+	, region
+    , SUM(sales_price * quantity)
+FROM customer_orders
+GROUP BY company_name, region
+ORDER BY SUM(sales_price * quantity) DESC;
 
 
 
