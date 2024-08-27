@@ -13,7 +13,15 @@
 
 
 -- (5 rows)
+USE northwind;
 
-
+SELECT company_name
+	, order_id
+    , country
+    , SUM((sales_price * quantity)) AS 'order total'
+FROM customer_orders
+GROUP BY order_id
+ORDER BY SUM((sales_price * quantity)) DESC
+LIMIT 5;
 
 

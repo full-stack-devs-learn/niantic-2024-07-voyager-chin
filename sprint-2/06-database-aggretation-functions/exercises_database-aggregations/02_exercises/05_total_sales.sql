@@ -4,6 +4,10 @@
 
 -- (1 row) -- 1354489.59
 
+USE northwind; 
+
+SELECT SUM(sales_price * quantity) AS 'sum of all sales'
+FROM customer_orders;
 
 
 

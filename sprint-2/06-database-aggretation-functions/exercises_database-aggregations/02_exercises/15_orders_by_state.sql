@@ -14,7 +14,13 @@
 -- MT   3
 
 -- (8 row)
+USE northwind;
 
+SELECT region
+	, COUNT(DISTINCT order_id)
+FROM customer_orders
+WHERE country = 'USA'
+GROUP BY region;
 
 
 

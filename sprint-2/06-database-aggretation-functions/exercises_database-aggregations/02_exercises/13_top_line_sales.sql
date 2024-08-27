@@ -10,8 +10,17 @@
 -- Rattlesnake Canyon Grocery,  10889,  USA,        10540.00
 
 
--- (1 row)
+-- (5 rows)
 
+USE northwind;
+
+SELECT company_name
+	, order_id
+    , country
+    , sales_price * quantity
+FROM customer_orders
+ORDER BY sales_price * quantity DESC
+LIMIT 5;
 
 
 
