@@ -16,7 +16,11 @@
 
 function calculateOrderSubtotal(quantity)
 {
-	return 0;
+	const price = 12.95;
+
+	const subtotal = quantity * price;
+
+	return subtotal;
 }
 
 
@@ -40,7 +44,10 @@ function calculateOrderSubtotal(quantity)
 
 function calculateTax(quantity)
 {
-	return 0;
+	const subtotal = calculateOrderSubtotal(quantity);
+	const tax = subtotal * (5.75 / 100);
+
+	return Math.round(tax * 100) / 100;
 }
 
 
@@ -64,6 +71,12 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function calculateOrderTotal(quantity)
+{
+	const total = calculateOrderSubtotal(quantity) + calculateTax(quantity);
+
+	return Math.round(total * 100) / 100;
+}
 
 
 /*
@@ -106,6 +119,18 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function placeOrder(name, quantity)
+{
+	const receipt = {};
+
+	receipt.customer = name;
+	receipt.quantity = quantity;
+	receipt.subtotal = calculateOrderSubtotal(quantity);
+	receipt.tax = calculateTax(quantity);
+	receipt.total = calculateOrderTotal(quantity);
+
+	return receipt;
+}
 
 
 /*
@@ -128,3 +153,25 @@ function calculateTax(quantity)
 */
 
 // create your function here
+function calculateCookiesNeeded(a, b, e)
+{
+	const cookiesA = a * 4; // 4 per A student
+	const cookiesB = b * 3; // 3 per B student
+	const cookiesE = e * 2; // 2 everyone else
+
+	function getDozen(quantity)
+	{
+		if (quantity % 12 > 0)
+		{
+			return Math.ceil(quantity / 12);
+		}
+		else
+		{
+			return Math.ceil(quantity / 12) + 1;
+		}
+	}
+
+	const dozenNeeded = getDozen(a) + getDozen(b) + getDozen(e);
+
+	return dozenNeeded;
+}
