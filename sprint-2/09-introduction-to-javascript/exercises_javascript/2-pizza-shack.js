@@ -13,7 +13,22 @@
 
 */
 
+function getToppings(selection)
+{
+	const hawaiian = ["Ham","Pineapple","Mushroom"];
+	const cowboy = ["Pepperoni", "Sausage", "Beef"];
+	const supreme = ["Pepperoni", "Sausage", "Pepper", "Onion", "Black Olives"];
+	const vegetarian = ["Spinach", "Zucchini", "Mushroom", "Artichoke", "Tomato", "Onion"];
+	const cheese = ["Cheese"];
 
+	const toppings =  selection.toLowerCase() == "hawaiian" ? hawaiian
+		: selection.toLowerCase() == "cowboy" ? cowboy
+		: selection.toLowerCase() == "supreme" ? supreme
+		: selection.toLowerCase() == "vegetarian" ? vegetarian
+		: selection.toLowerCase() == "cheese" ? cheese : [];
+
+	return toppings;
+}
 
 
 /*
@@ -30,7 +45,20 @@
 
 */
 
+function makePizza(order)
+{
+	const toppings = getToppings(order);
 
+	const pizza = {};
+	
+	if (toppings.length > 0)
+	{
+		pizza.name = order.charAt(0).toUpperCase() + order.slice(1).toLowerCase();
+		pizza.toppings = toppings;
+	}
+
+	return pizza;
+}
 
 
 /*
@@ -64,7 +92,32 @@
 
 */
 
+function makeCustom(a = '', b = '', c = '')
+{
+	const pizza = {};
+	const toppings = [];
 
+	if (a != '')
+	{
+		toppings.push(a)
+	}
+	if (b != '')
+	{
+		toppings.push(b)
+	}
+	if (c != '')
+	{
+		toppings.push(c)
+	}
+
+	if(toppings.length > 0)
+	{
+		pizza.name = "Custom";
+		pizza.toppings = toppings;
+	}
+
+	return pizza;
+}
 
 
 /*
@@ -114,3 +167,32 @@
 
 */
 
+function createOrder(customer, hawaiian=false, cowboy=false, supreme=false, vegetarian=false, cheese=false)
+{
+	const order = {};
+
+	if (hawaiian || cowboy || supreme || vegetarian || cheese)
+	{
+		order.customer = customer;
+		order.pizzas = [];
+	}
+
+	if(hawaiian){
+		order.pizzas.push(makePizza('hawaiian'));
+	}
+	if(cowboy){
+		order.pizzas.push(makePizza('cowboy'));
+	}
+	if(supreme){
+		order.pizzas.push(makePizza('supreme'));
+	}
+	if(vegetarian){
+		order.pizzas.push(makePizza('vegetarian'));
+	}
+	if(cheese){
+		order.pizzas.push(makePizza('cheese'));
+	}
+
+	return order;
+	
+}
