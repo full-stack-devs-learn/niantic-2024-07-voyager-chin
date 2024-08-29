@@ -1,0 +1,12 @@
+{
+  "name": "intro-to-javascript",
+  "version": "1.0.0",
+  "description": "Introduction to Programming with JavaScript",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "Full Stack Devs",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
