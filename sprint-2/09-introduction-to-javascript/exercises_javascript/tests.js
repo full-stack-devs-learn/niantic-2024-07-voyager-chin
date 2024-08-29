@@ -157,7 +157,7 @@ describe("Lab - Programming with JavaScript", () =>
         actual.should.equal(expected);
       });
     });
-  });
+  }),
 
   describe("Problem 2 - Pizza Shack", () =>
   {
@@ -398,6 +398,6 @@ describe("Lab - Programming with JavaScript", () =>
         actual.should.eql(expected);
       });
     })
-  });
+  })
 
 });
