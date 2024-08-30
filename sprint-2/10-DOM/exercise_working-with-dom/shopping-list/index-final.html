@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping List</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/shopping-service.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="title">SHOPPING LIST</h1>
+        <div class="list-container">
+            <div class="shopping-list">
+                <div class="list-item">
+                    <div>5 lb sack of potatoes</div>
+                    <div class="quantity-container"><span class="super">quantity</span>1</div>
+                </div>
+                <div class="list-item complete">
+                    <div>Frozen Pizza</div>
+                    <div class="quantity-container"><span class="super">quantity</span>4</div>
+                </div>
+            </div>
+            <button class="btn" onclick="markCompleted()">
+                Mark All Completed
+            </button>
+        </div>
+    </div>
+
+
+
+    <script src="js/shopping-list.js"></script>
+</body>
+
+</html>
