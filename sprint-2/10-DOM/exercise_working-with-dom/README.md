@@ -4,7 +4,7 @@ In this exercise, you'll build a shopping list from data. You can find all of th
 
 ## Exercise
 
-First, open `js/shopping-wervice.js`:
+First, open `js/shopping-service.js`:
 
 - add code to the `getListName()` function and return the name of the shopping list.
 - add logic to the `getShoppingList()` function and return an {Array} of at least 10 shopping list items that follow this pattern:

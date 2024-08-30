@@ -17,16 +17,19 @@
 
 <body>
 
-    <div class="shopping-list">
-        <h1 id="title"></h1>
-        <ul id="groceries">
-            <!-- add groceries here -->
-        </ul>
+    <div class="container">
+        <h1 id="title">SHOPPING LIST</h1>
+        <div class="list-container">
+            <div class="shopping-list" id="shopping-list">
+                <!-- your shopping list divs go here -->
+            </div>
+            <button class="btn" onclick="markCompleted()">
+                Mark All Completed
+            </button>
+        </div>
     </div>
 
-    <a href="#" class="btn">
-        Mark All Completed
-    </a>
+
 
     <script src="js/shopping-list.js"></script>
 </body>
