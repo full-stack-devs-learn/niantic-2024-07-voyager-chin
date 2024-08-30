@@ -1,0 +1,97 @@
+:root {
+    --color-primary: #1c1c1c;
+    --color-light: #ffffff;
+    --color-danger: #ff0000;
+    --color-warning: rgb(255, 162, 0);
+    --color-success: rgb(12, 145, 10);
+    --bg-primary: #cdcdcd;
+    --bg-danger: #ffdfdf;
+    --bg-warning: #ffefdf;
+    --font-size: 16px;
+    --font-family: 'Kanit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:var(--bg-primary) ;
+}
+
+.todo-list {
+    width: 80%;
+    background: #fff;
+    margin: 50px auto;
+    font-family: var(--font-family);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border: 2px solid var(--color-primary);
+    border-bottom: 0 !important;
+}
+
+.todo-list .header {
+    background:#f2f2f2;
+    color:var(--color-primary);
+    padding:10px;
+    font-size:2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.todo-list .task {
+    border-bottom: 2px solid var(--color-primary);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: 40px;
+}
+
+.task .date {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    height: 100%;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task .priority {
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100px;
+}
+
+.task .title {
+    font-weight: 300;
+}
+
+.task.high {
+    background-color: var(--bg-danger);
+}
+
+.task.medium {
+    background-color: var(--bg-warning);
+}
+
+.priority-high {
+    background-color: var(--color-danger);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.priority-medium{
+    background-color: var(--color-warning);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.priority-low{
+    background-color: var(--color-success);
+    padding: 8px;
+    border-radius: 8px;
+}
