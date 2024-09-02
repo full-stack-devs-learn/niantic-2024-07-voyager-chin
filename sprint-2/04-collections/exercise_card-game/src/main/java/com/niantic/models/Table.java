@@ -50,7 +50,7 @@ public class Table
     public Card getRowEndCardA() { return rowA.getLast(); }
     public Card getRowEndCardB() { return rowB.getLast(); }
     public Card getRowEndCardC() { return rowC.getLast(); }
-    public Card getRowEndCardD() { return rowA.getLast(); }
+    public Card getRowEndCardD() { return rowD.getLast(); }
 
     // Getters and Setters
     public ArrayList<Card> getRowA() {
@@ -276,11 +276,8 @@ public class Table
 
     // Get row count A-D
     public int getRowSizeA() { return rowA.size(); }
-
     public int getRowSizeB() { return rowB.size(); }
-
     public int getRowSizeC() { return rowC.size(); }
-
     public int getRowSizeD() { return rowD.size(); }
 
     // Remove all cards each row A-D
