@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    height: 97vh;
+    padding: 10px;
+    
+    gap: 10px;
+}
+
+#event-log {
+    flex-grow: 10;
+
+    padding: 20px;
+    border: solid 1px #777;
+    border-radius: 3px;
+    background-color: #eee;
+}
