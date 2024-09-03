@@ -28,9 +28,15 @@ function addListItem(item, parent)
     }
 
     addItemTitle(item, div);
-    addQuantity(item, div)
+    addQuantity(item, div);
+    addItemId(item, div); // 
 
     parent.appendChild(div)
+
+    // add event listener to div
+    div.addEventListener("click", () => markItemComplete(item.id));
+    div.addEventListener("dblclick", () =>  markItemIncomplete(item.id));
+
 }
 
 function addItemTitle(item, parent)
@@ -58,15 +64,80 @@ function addQuantity(item, parent)
     parent.appendChild(div);
 }
 
-
+// create function to mark all complete
 function markCompleted() {
     const listItems = document.querySelectorAll(".list-item");
 
     listItems.forEach(item => {
-        item.classList.add("complete");
+        if (!item.isComplete){
+            item.isComplete = true;
+            item.classList.add("complete");
+        }
     })
+    
+    changeButtonToIncomplete();
 }
 
+// create function to mark all incomplete
+function markAllIncomplete() {
+    const listItems = document.querySelectorAll(".list-item");
+
+    listItems.forEach(item => {
+        if (item.isComplete){
+            item.isComplete = false;
+            item.classList.remove("complete");
+        }
+    })
+
+    changeButtonToCompleted()
+}
+
+// change button text to "Mark All Incomplete"
+function changeButtonToIncomplete() {
+    const button = document.getElementById("allCompleteButton");
+    button.textContent = "Mark All Incomplete";
+    button.onclick = markAllIncomplete;
+}
+
+// change button text to "Mark All Completed"
+function changeButtonToCompleted() {
+    const button = document.getElementById("allCompleteButton");
+    button.textContent = "Mark All Completed";
+    button.onclick = markCompleted;
+}
+
+function markItemComplete(id)
+{
+    // get item using id
+    const shoppingItem = list.filter((item) => item.id == id);
+    
+    // check if !isComplete
+    if (!shoppingItem.isComplete) {
+        shoppingItem.isComplete = true;
+    }
+    
+    const item = document.getElementById(`${id}`);
+    item.classList.add("complete")
+}
+
+function markItemIncomplete(id)
+{
+    // get item using id
+    const shoppingItem = list.filter((item) => item.id == id);
+    
+    // check if isComplete
+    if (shoppingItem.isComplete) {
+        shoppingItem.isComplete = false;
+    }
+
+    const item = document.getElementById(`${id}`);
+    item.classList.remove("complete")
+}
+
+
+function addItemId(item, div) {
+    div.id = item.id;
+}
 
 // create the page load event here
 
@@ -77,4 +148,3 @@ document.addEventListener("DOMContentLoaded", () => {
     displayListTitle();
     displayShoppingList();
 });
-
