@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+div#game {
+    display: grid;
+
+    width: 450px;
+    height: 450px;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+#resetButton {
+    margin-bottom: 10px;
+}
