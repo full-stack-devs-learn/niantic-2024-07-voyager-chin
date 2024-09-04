@@ -3,6 +3,11 @@ let list = []
 
 let allItemsIncomplete = true;
 
+let itemInput;
+let itemError;
+let quantityInput;
+let quantityError;
+
 
 function displayListTitle() {
     const title = document.getElementById("title")
@@ -35,7 +40,7 @@ function addListItem(item, parent)
 
     // add event listener to div
     div.addEventListener("click", () => markItemComplete(item.id));
-    div.addEventListener("dblclick", () =>  markItemIncomplete(item.id));
+    div.addEventListener("dblclick", () => markItemIncomplete(item.id));
 
 }
 
@@ -134,9 +139,72 @@ function markItemIncomplete(id)
     item.classList.remove("complete")
 }
 
-
 function addItemId(item, div) {
     div.id = item.id;
+}
+
+// ADD ITEM TO SHOPPING LIST
+function addItem(event){
+    event.preventDefault();
+
+    showErrors();
+
+    // create a new item object with item name and quantity
+    if(itemInput.validity.valid && quantityInput.validity.valid) {
+        const itemName = document.getElementById("itemInput").value;
+        const quantity = document.getElementById("quantityInput").value;
+
+        const newItem = {
+            id: list.length + 1,
+            title: itemName,
+            quantity: quantity,
+            isComplete: false
+        }
+
+        list.push(newItem);
+
+        const parent = document.getElementById("shopping-list");
+        addListItem(newItem, parent);
+        
+        clearForm();
+    }
+}
+
+function clearForm(){
+    document.getElementById("itemInput").value = "";
+    document.getElementById("quantityInput").value = "";
+}
+
+function setupValidation(){
+    itemInput = document.getElementById("itemInput");
+    itemError = document.getElementById("itemError");
+
+    quantityInput = document.getElementById("quantityInput");
+    quantityError = document.getElementById("quantityError");
+}
+
+function showErrors(){
+    if(!itemInput.validity.valid)
+        {
+          itemError.textContent = "Item name is required";
+          itemInput.classList.add("error")
+        }
+        else
+        {
+          itemError.textContent = "";
+          itemInput.classList.remove("error")
+        }
+      
+        if(!quantityInput.validity.valid)
+        {
+          quantityError.textContent = "Quantity is required";
+          quantityInput.classList.add("error")
+        }
+        else
+        {
+          quantityError.textContent = "";
+          quantityInput.classList.remove("error")
+        }
 }
 
 // create the page load event here
@@ -147,4 +215,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     displayListTitle();
     displayShoppingList();
+    setupValidation();
+
 });
+
+document.addEventListener("click", () => {
+    const form = document.getElementById("add-item");
+    form.addEventListener("submit", addItem);
+})

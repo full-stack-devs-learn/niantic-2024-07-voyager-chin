@@ -23,16 +23,18 @@
     <div class="container">
         <div>
             <h1 id="title"></h1>
-            <form>
+            <form id="add-item" novalidate>
                 <div class="form-floating mb-3">
-                    <input  type="text" class="form-control" id="itemName" placeholder="Item Name">
-                    <label for="itemName">Item Name</label>
+                    <input  type="text" class="form-control" id="itemInput" placeholder="Item Name" required>
+                    <label for="itemInput">Item Name</label>
+                    <span id="itemError" style="color: red;"></span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control"  id="quantity" placeholder="Quantity">
-                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control"  id="quantityInput" placeholder="Quantity" required>
+                    <label for="quantityInput">Quantity</label>
+                    <span id="quantityError" style="color: red;"></span>
                 </div>
-                <button type="submit" class="btn">Add Item</button>
+                <button type="submit" class="btn" id="add-btn">Add Item</button>
             </form>
         
         </div>
