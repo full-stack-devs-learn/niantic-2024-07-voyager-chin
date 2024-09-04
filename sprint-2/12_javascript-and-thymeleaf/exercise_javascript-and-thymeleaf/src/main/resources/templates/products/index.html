@@ -11,11 +11,16 @@
 
 </head>
 <body>
+
+<script src="/js/products-list.js"></script>
+
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
+
 <h4>Products:
     <select name="category" id="category" class="form-select">
-        <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}" th:selected="${category.categoryId} == ${currentCategory.categoryId}"></option>
+        <option value="">Select Category</option>
+        <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
     </select>
 </h4>
 
@@ -29,18 +34,8 @@
         <th></th>
     </tr>
     </thead>
-    <tbody>
-    <tr th:each="product:${products}">
-        <td th:text="${product.productId}"></td>
-        <td>
-            <a  th:href="@{|/products/${product.productId}|}" th:text="${product.productName}"></a>
-        </td>
-        <td th:text="${#numbers.formatCurrency(product.unitPrice)}"></td>
-        <td>
-            <a  th:href="@{|/products/${product.productId}/edit|}" class="btn btn-success">Edit</a>
-            <a  th:href="@{|/products/${product.productId}/delete|}" class="btn btn-danger">Delete</a>
-        </td>
-    </tr>
+    <tbody id="product-container">
+
     </tbody>
 </table>
 </main>
