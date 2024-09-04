@@ -9,21 +9,55 @@ const player2 = {
 }
 
 // current
-let currentPlayer;
+let currentPlayer = player1;
 
 
 function setNextPlayer()
 {
+    switch (currentPlayer)
+    {
+        case player1:
+            currentPlayer = player2;
+            break;
+        case player2:
+            currentPlayer = player1;
+            break;
+    }
+    displayCurrentPlayer();
 }
 
-
-function init()
+function displayCurrentPlayer()
 {
-    
+    const display = document.getElementById('playerName');
+    display.textContent = `${currentPlayer.name}`;
+}
+
+function playerTurn(event)
+{
+    event.target.textContent = currentPlayer.value;
+    setNextPlayer();
+}
+
+function reset()
+{
+    const game = document.getElementsByClassName('game-button');
+    const buttons = Array.from(game);
+
+    buttons.forEach(button => button.textContent = '');
+    // event.target.textContent = '';
+    currentPlayer = player1;
+    displayCurrentPlayer();
 }
 
 // main
 document.addEventListener('DOMContentLoaded', () =>
 {
-    init()
+    displayCurrentPlayer();
+
+    const game = document.getElementsByClassName('game-button');
+    const buttons = Array.from(game);
+    buttons.forEach(button => {button.addEventListener('click', playerTurn) });
+
+    const resetButton = document.getElementById('resetButton');
+    resetButton.addEventListener('click', reset);
 })
