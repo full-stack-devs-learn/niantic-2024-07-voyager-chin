@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/head :: head"></div>
+
+<body>
+<script src="/js/actors-list-dom.js" ></script>
+
+<div th:replace="fragments/navigation :: nav"></div>
+
+<main class="container mt-4">
+
+    <h1>List All Actors</h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First name</th>
+            <th>Last Name</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody id="actor-container">
+
+        </tbody>
+    </table>
+
+    <div class="btn-group">
+        <button id="first" type="button" class="btn btn-primary">&lt;&lt;</button>
+        <button id="previous" type="button" class="btn btn-primary">&lt;</button>
+        <button id="next" type="button" class="btn btn-primary">&gt;</button>
+        <button id="last" type="button" class="btn btn-primary">&gt;&gt;</button>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<div th:replace="fragments/head :: head"></div>
+
+<body>
+<script src="/js/actor-add.js" ></script>
+
+<div th:replace="fragments/navigation :: nav"></div>
+
+<main class="container mt-4">
+    <h1 th:if="${action} =='add'">Add Actor</h1>
+    <h1 th:if="${action} =='edit'">Edit Actor</h1>
+
+    <form id="add-actor" method="post" th:object="${actor}" novalidate th:class="${isInvalid} ? 'was-validated' : ''">
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{firstName}" placeholder="First Name" required>
+            <div class="invalid-feedback">Enter the first name.</div>
+            <div class="valid-feedback">First Name looks GREAT!</div>
+            <label th:for="*{firstName}">First Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="text" th:field="*{lastName}" placeholder="Last Name" required>
+            <div class="invalid-feedback">Enter the last name.</div>
+            <div class="valid-feedback">Last Name looks GREAT!</div>
+            <label th:for="*{lastName}">Last Name</label>
+        </div>
+        <input class="btn btn-outline-danger" type="submit" value="Save">
+    </form>
+
+</main>
+</body>
+</html>
