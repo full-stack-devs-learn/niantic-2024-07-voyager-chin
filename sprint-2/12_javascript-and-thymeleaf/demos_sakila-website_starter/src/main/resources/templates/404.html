@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/head :: head"></div>
+
+<body>
+
+<div th:replace="fragments/navigation :: nav"></div>
+
+<main class="container mt-4">
+    <h1>404 - Page was not found</h1>
+    <h6 th:text="${message}"></h6>
+</main>
+</body>
+</html>

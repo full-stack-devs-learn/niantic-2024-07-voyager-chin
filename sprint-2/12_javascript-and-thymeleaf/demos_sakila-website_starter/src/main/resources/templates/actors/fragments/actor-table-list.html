@@ -1,0 +1,9 @@
+<tr th:each="actor:${actors}" class="magenta">
+    <td th:text="${actor.actorId}"></td>
+    <td><a th:href="@{|/actors/${actor.actorId}|}" th:text="${actor.firstName}"></a></td>
+    <td th:text="${actor.lastName}"></td>
+    <td>
+        <a th:href="@{|/actors/${actor.actorId}/edit|}" class="btn btn-outline-warning">Edit</a>
+        <a th:href="@{|/actors/${actor.actorId}/delete|}" class="btn btn-outline-danger">Delete</a>
+    </td>
+</tr>
