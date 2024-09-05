@@ -1,14 +1,25 @@
 package com.niantic.models;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PositiveOrZero;
+
 public class Product
 {
     private int productId;
+    @PositiveOrZero(message = "Category is required")
     private int categoryId;
+    @NotEmpty(message = "Product name is required")
     private String productName;
+    @NotEmpty(message = "Quantity is required")
     private String quantityPerUnit;
+    @DecimalMin(value="0.01", message = "Unit price is required")
     private double unitPrice;
+    @PositiveOrZero(message = "Units in stock is required")
     private int unitsInStock;
+    @PositiveOrZero(message = "Units on order is required")
     private int unitsOnOrder;
+    @PositiveOrZero(message = "Reorder level is required")
     private int reorderLevel;
 
     public Product(int productId, int categoryId, String productName, String quantityPerUnit, double unitPrice, int unitsInStock, int unitsOnOrder, int reorderLevel)

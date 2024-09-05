@@ -1,14 +1,13 @@
 package com.niantic.controllers;
 
-import com.niantic.models.Category;
 import com.niantic.models.Product;
 import com.niantic.services.CategoryDao;
 import com.niantic.services.ProductDao;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @Controller
 public class ProductsController
@@ -62,7 +61,7 @@ public class ProductsController
         return "products/details";
     }
 
-    // add category
+    // add product: display form
     @GetMapping("/products/new")
     public String addCategory(Model model)
     {
@@ -72,10 +71,17 @@ public class ProductsController
         return "products/add";
     }
 
+    // add product: submit form
     @PostMapping("/products/new")
-    public String saveProduct(@ModelAttribute("product") Product product)
+    public String saveProduct(Model model, @Valid @ModelAttribute("product") Product product, BindingResult result)
     {
-
+        if (result.hasErrors())
+        {
+            var categories = categoryDao.getCategories();
+            model.addAttribute("categories", categories);
+            model.addAttribute("isInvalid", true);
+            return "products/add"; // redirect back to add page
+        }
         productDao.addProduct(product);
         return "redirect:/products?catId=" + product.getCategoryId();
     }
