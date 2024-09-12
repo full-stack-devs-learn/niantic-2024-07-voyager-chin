@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SwordTest
 {
-    Sword sword;
+    private Sword sword;
 
     @BeforeEach
     public void setup()
@@ -35,12 +35,10 @@ class SwordTest
     {
         //Arrange
         int expectedCharge = 20;
-
         //Act
         sword.attack();
         sword.attack();
         int actualCharge = sword.getPercentCharged();
-
         //Assert
         assertEquals(expectedCharge, actualCharge, "Because percentCharge should be 20 after attacking 2x");
     }
@@ -50,13 +48,12 @@ class SwordTest
     {
         //Arrange
         int expectedPercentCharged = 100;
-
+        sword.setPercentCharged(25);
         //Act
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 10; i++) {
             sword.attack();
         }
         int actualPercentCharged = sword.getPercentCharged();
-
         //Assert
         assertEquals(expectedPercentCharged, actualPercentCharged, "Because percent charged cannot exceed 100%");
     }
@@ -65,29 +62,35 @@ class SwordTest
     @CsvSource({"100,40", "70,20", "30,10", "0, 0"})
     void powerAttack_shouldDeliver_correctDamage(int percentCharged, int expectedPercentCharged)
     {
+        // Arrange
         sword.setPercentCharged(percentCharged);
+        //Act
         int actualPowerDamage = sword.powerAttack();
-
+        // Assert
         assertEquals(expectedPercentCharged, actualPowerDamage, "Because < 50% just performs a regular attack, 50% - 90% delivers double blow, 100% delivers 4x blow");
     }
 
     @ParameterizedTest
-    @CsvSource({"100,0", "70,35", "30,30", "0, 0"})
+    @CsvSource({"100,0", "70,20", "30,30", "0, 0"})
     void powerAttack_shouldReduce_correctCharge(int percentCharged, int expectedPercentCharged)
     {
+        // Arrange
         sword.setPercentCharged(percentCharged);
+        // Act
         sword.powerAttack();
         int actualPercentCharged = sword.getPercentCharged();
-
+        // Assert
         assertEquals(expectedPercentCharged, actualPercentCharged);
     }
 
     @Test
     void getRange_shouldReturn_1()
     {
+        // Arrange
         int expectedRange = 1;
+        // Act
         int actualRange = sword.getRange();
-
+        // Assert
         assertEquals(expectedRange, actualRange, "Because sword range should be 1");
     }
 }
