@@ -1,5 +1,6 @@
 package com.niantic.models;
 
+import java.sql.Array;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,7 +63,47 @@ public class Card implements Comparable<Card>
     @Override
     public int compareTo(Card o)
     {
+        int otherSuit = getOrder(o.suit);
+        int thisSuit= getOrder(this.suit);
+
         // todo: Exercise 1: implement Comparable<Card>
-        return 0;
+        if (otherSuit != thisSuit)
+        {
+            return otherSuit > thisSuit ? -1 : 1;
+        }
+        else
+        {
+            try { otherSuit = Integer.parseInt(o.faceValue); }
+            catch (NumberFormatException e) { otherSuit = getOrder(o.faceValue); }
+            try { thisSuit = Integer.parseInt(this.faceValue); }
+            catch (NumberFormatException e) { thisSuit = getOrder(this.faceValue); }
+
+            return otherSuit > thisSuit ? -1 : 1;
+        }
+    }
+
+    public int getOrder(String suitOrValue)
+    {
+        switch (suitOrValue)
+        {
+            case "Spades":
+                return 1;
+            case "Hearts":
+                return 2;
+            case "Diamonds":
+                return 3;
+            case "Clubs":
+                return 4;
+            case "J":
+                return 11;
+            case "Q":
+                return 12;
+            case "K":
+                return 13;
+            case "A":
+                return 14;
+            default:
+                return 0;
+        }
     }
 }
