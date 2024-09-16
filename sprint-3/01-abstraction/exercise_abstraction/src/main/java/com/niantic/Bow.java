@@ -15,20 +15,15 @@ public class Bow extends Weapon
         super(name, damage);
         this.arrowType = arrowType;
         this.quiverSize = quiverSize;
+        arrowCount = quiverSize;
 
         Timer timer = new Timer();
         TimerTask replenishArrow = new TimerTask() {
             @Override
             public void run() {
-                int arrowToAdd = 0;
                 if (arrowCount < quiverSize) {
-                    arrowToAdd++;
+                    arrowCount++;
                 }
-                else
-                {
-                    arrowToAdd = quiverSize;
-                }
-                arrowCount = arrowToAdd;
             }
         };
         // Arrows are replenished 1 at a time in 5 second intervals
