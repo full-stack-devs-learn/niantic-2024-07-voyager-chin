@@ -51,8 +51,10 @@ class BowTest
     void arrows_shouldReplenish_everyFiveSeconds()
     {
         //arrange
-        int initialArrows = bow.getArrowCount();
-        int expectedArrows = initialArrows + 1;
+        int initialArrows = bow.getQuiverSize();
+        bow.attack();
+        bow.attack();
+        int expectedArrows = initialArrows -1;
 
         //act
         TimerTask updateArrows = new TimerTask() {
@@ -128,5 +130,18 @@ class BowTest
         int actualRange = bow.getRange();
         //assert
         assertEquals(expectedRange, actualRange, "Bow should return 20 range");
+    }
+
+    @Test
+    void attack_shouldRemove_oneArrowPerAttack()
+    {
+        //arrange
+        int expectedArrows = 5;
+        //act
+        bowPoison.attack();
+        bowPoison.attack();
+        int actualArrows = bowPoison.getArrowCount();
+        //assert
+        assertEquals(expectedArrows, actualArrows);
     }
 }
