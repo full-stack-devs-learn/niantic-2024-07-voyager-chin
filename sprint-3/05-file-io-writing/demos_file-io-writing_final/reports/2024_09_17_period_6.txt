@@ -1,0 +1,16 @@
+period 6
+------------------------------
+Low GPA:                 2.12
+High GPA:                3.84
+Average GPA:             2.92
+------------------------------
+Emily      Evans         2.47
+Angela     Moore         2.82
+Ashley     Allen         3.18
+Thomas     Nelson        2.31
+Elizabeth  Jones         2.12
+Jessica    King          3.04
+Lisa       Scott         3.44
+Michael    Martinez      3.16
+Mark       Jackson       2.83
+Kevin      Brown         3.84
