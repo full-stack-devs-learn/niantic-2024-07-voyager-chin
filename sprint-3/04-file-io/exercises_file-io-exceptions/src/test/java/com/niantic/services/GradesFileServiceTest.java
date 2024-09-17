@@ -31,13 +31,24 @@ class GradesFileServiceTest
     @org.junit.jupiter.api.Test
     void getAssignments_shouldReturn_studentAssignments()
     {
-        int expectedAssignmentCount = 15;
-        int actualAssignmentCount = service.getAssignments("student_5_joshua_martin.csv").size();
+        int expectedCount = 15;
+        int actualCount = service.getAssignments("student_5_joshua_martin.csv").size();
 
-        assertEquals(expectedAssignmentCount, actualAssignmentCount, "Because it should return all assignments in the file");
+        assertEquals(expectedCount, actualCount, "Because it should return all assignments in the file");
     }
 
     @org.junit.jupiter.api.Test
-    void getAllAssignments() {
+    void getAllAssignments_shouldReturn_allAssignmentsInDirectory()
+    {
+        String[] fileNames = {"student_1_anna_williams.csv"
+                            , "student_2_david_jones.csv"
+                            , "student_3_laura_brown.csv"
+                            , "student_4_eric_walker.csv"
+                            , "student_5_joshua_martin.csv"};
+
+        int expectedCount = 75;
+        int actualCount = service.getAllAssignments(fileNames).size();
+
+        assertEquals(expectedCount, actualCount, "Because it should return the total assignment count from all files");
     }
 }
