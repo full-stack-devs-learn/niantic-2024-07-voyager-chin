@@ -11,7 +11,6 @@ import java.util.List;
 public class GradingApplication implements Runnable
 {
     private GradesService gradesService = new GradesFileService();
-    private int selection;
 
     public void run()
     {
@@ -63,6 +62,10 @@ public class GradingApplication implements Runnable
         {
             System.out.println(e.getMessage());
         }
+
+        System.out.println();
+        System.out.print("Go back to Main Menu?");
+        UserInput.waitForUser();
     }
 
     private void displayFileScores()
@@ -72,7 +75,7 @@ public class GradingApplication implements Runnable
 
         displayAllFiles();
 
-        selection = UserInput.fileSelection();
+        int selection = UserInput.fileSelection();
 
         // find file name String based on number input from file selection
         String[] files = gradesService.getFileNames();
@@ -80,14 +83,12 @@ public class GradingApplication implements Runnable
 
         // use file name to get assignment
         List<Assignment> assignments = gradesService.getAssignments(selectedFile);
-        String firstName = assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
-                           assignments.getFirst().getFirstName().substring(1).toLowerCase();
-        String lastName = assignments.getFirst().getLastName().substring(0,1).toUpperCase() +
-                          assignments.getFirst().getLastName().substring(1).toLowerCase();
+        String studentName = parseStudentName(assignments.getFirst().getFirstName(), assignments.getFirst().getLastName());
 
         System.out.println();
-        System.out.println("Student Name: " + firstName + " " + lastName);
-        System.out.println();
+        System.out.println("------------------------------------");
+        System.out.println("Student Name: " + studentName);
+        System.out.println("------------------------------------");
         System.out.println(String.format("%-30s %2s", "Assignment", "Score"));
         System.out.println("------------------------------------");
         for(Assignment assignment : assignments)
@@ -95,6 +96,10 @@ public class GradingApplication implements Runnable
             System.out.println(String.format("%-30s (%2d)", assignment.getAssignmentName(), assignment.getScore()));
         }
         System.out.println("------------------------------------");
+        System.out.println();
+
+        System.out.print("Go back to Main Menu?");
+        UserInput.waitForUser();
     }
 
     private void displayStudentAverages()
@@ -102,7 +107,9 @@ public class GradingApplication implements Runnable
         // todo: 3 - allow the user to select a file name
         // load all student assignment scores from the file - display student statistics (low score, high score, average score)
 
-        displayFileScores();
+        displayAllFiles();
+
+        int selection = UserInput.fileSelection();
 
         // find file name String based on number input from file selection
         String[] files = gradesService.getFileNames();
@@ -110,10 +117,7 @@ public class GradingApplication implements Runnable
 
         // use file name to get assignment
         List<Assignment> assignments = gradesService.getAssignments(selectedFile);
-        String firstName = assignments.getFirst().getFirstName().substring(0,1).toUpperCase() +
-                assignments.getFirst().getFirstName().substring(1).toLowerCase();
-        String lastName = assignments.getFirst().getLastName().substring(0,1).toUpperCase() +
-                assignments.getFirst().getLastName().substring(1).toLowerCase();
+        String studentName = parseStudentName(assignments.getFirst().getFirstName(), assignments.getFirst().getLastName());
 
         var scores = assignments.stream().map(Assignment::getScore).sorted().toList();
 
@@ -122,10 +126,12 @@ public class GradingApplication implements Runnable
         int averageScore = scores.stream().reduce(0, (subtotal, score) -> subtotal + score) / scores.size();
 
         System.out.println();
-        System.out.println("Student Statistics: " + firstName + " " + lastName);
+        System.out.println("------------------------------------");
+        System.out.println("Student Statistics: " + studentName);
         System.out.println("Low Score: " + lowScore);
         System.out.println("High Score: " + highScore);
         System.out.println("Average Score: " + averageScore);
+        System.out.println("------------------------------------");
         System.out.println();
 
         System.out.print("Go back to Main Menu?");
@@ -136,6 +142,32 @@ public class GradingApplication implements Runnable
     {
         // todo: 4 - Optional / Challenge - load all scores from all student and all assignments
         // display the statistics for all scores (low score, high score, average score, number of students, number of assignments)
+
+        String[] files = gradesService.getFileNames();
+        List<Assignment> assignments = gradesService.getAllAssignments(files);
+
+        var scores = assignments.stream().map(Assignment::getScore).sorted().toList();
+
+        int lowScore = scores.getFirst();
+        int highScore = scores.getLast();
+        int averageScore = scores.stream().reduce(0, (subtotal, score) -> subtotal + score) / scores.size();
+        int numberOfStudents = files.length;
+        int numberOfAssignments = gradesService.getAssignments(files[0]).size();
+
+        System.out.println();
+        System.out.println("------------------------------------");
+        System.out.println("All Student Statistics");
+        System.out.println("------------------------------------");
+        System.out.println("Low Score: " + lowScore);
+        System.out.println("High Score: " + highScore);
+        System.out.println("Average Score: " + averageScore);
+        System.out.println("Number of Students: " + numberOfStudents);
+        System.out.println("Number of Assignments: " + numberOfAssignments);
+        System.out.println("------------------------------------");
+        System.out.println();
+
+        System.out.print("Go back to Main Menu?");
+        UserInput.waitForUser();
     }
 
     private void displayAssignmentStatistics()
@@ -145,10 +177,13 @@ public class GradingApplication implements Runnable
         // this one could take some time
     }
 
-    private String parseStudentName(String fileName)
+    private String parseStudentName(String firstName, String lastName)
     {
-        return fileName.replace(".csv", "")
-                        .replace("_", " ")
-                        .substring(10);
+        firstName = firstName.substring(0,1).toUpperCase() +
+                    firstName.substring(1).toLowerCase();
+        lastName = lastName.substring(0,1).toUpperCase() +
+                   lastName.substring(1).toLowerCase();
+
+        return firstName + " " + lastName;
     }
 }
