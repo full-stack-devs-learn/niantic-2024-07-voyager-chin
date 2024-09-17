@@ -27,12 +27,47 @@ public class UserInput
         System.out.println();
         System.out.print("Please make a selection: ");
 
-        return Integer.parseInt(in.nextLine());
+        return checkInput();
     }
 
     public static void displayMessage(String message)
     {
         System.out.println();
         System.out.println(message);
+    }
+
+    public static int fileSelection()
+    {
+        System.out.println();
+        System.out.print("Please select a file number: ");
+        return checkInput();
+    }
+
+    public static void waitForUser()
+    {
+        System.out.println();
+        System.out.print("Press ENTER to continue...");
+        in.nextLine();
+    }
+
+    public static int checkInput()
+    {
+        int selection = 0;
+        boolean isValid = false;
+
+        while (!isValid)
+        {
+            try
+            {
+                selection = Integer.parseInt(in.nextLine());
+                isValid = true;
+            }
+            catch (Exception e)
+            {
+                System.out.println("Sorry, invalid input. Try again.");
+                System.out.print("Please make a valid selection: ");
+            }
+        }
+        return selection;
     }
 }
