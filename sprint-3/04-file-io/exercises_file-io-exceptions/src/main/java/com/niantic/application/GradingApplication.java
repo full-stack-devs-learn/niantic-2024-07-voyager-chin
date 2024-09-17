@@ -62,10 +62,6 @@ public class GradingApplication implements Runnable
         {
             System.out.println(e.getMessage());
         }
-
-        System.out.println();
-        System.out.print("Go back to Main Menu?");
-        UserInput.waitForUser();
     }
 
     private void displayFileScores()
