@@ -67,6 +67,16 @@ public class GradesFileService implements GradesService
     {
         List<Assignment> allAssignments = new ArrayList<>();
 
+        for(String file : fileNames)
+        {
+            List<Assignment> assignments = getAssignments(file);
+
+            for(Assignment assignment: assignments)
+            {
+                allAssignments.add(assignment);
+            }
+        }
+
         return allAssignments;
     }
 }
