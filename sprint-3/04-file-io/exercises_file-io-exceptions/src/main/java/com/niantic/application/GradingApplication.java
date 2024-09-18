@@ -3,6 +3,7 @@ package com.niantic.application;
 import com.niantic.models.Assignment;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
+import com.niantic.services.ReportsService;
 import com.niantic.ui.UserInput;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import java.util.List;
 public class GradingApplication implements Runnable
 {
     private GradesService gradesService = new GradesFileService();
+    private ReportsService reportsService = new ReportsService();
 
     public void run()
     {
@@ -33,6 +35,12 @@ public class GradingApplication implements Runnable
                     break;
                 case 5:
                     displayAssignmentStatistics();
+                    break;
+                case 6:
+                    createStudentReport();
+                    break;
+                case 7:
+                    createAllStudentsReport();
                     break;
                 case 0:
                     UserInput.displayMessage("Goodbye");
@@ -171,6 +179,30 @@ public class GradingApplication implements Runnable
         // todo: 5 - Optional / Challenge - load all scores from all student and all assignments
         // display the statistics for each assignment (assignment name, low score, high score, average score)
         // this one could take some time
+    }
+
+    private void createStudentReport()
+    {
+        displayAllFiles();
+
+        int selection = UserInput.fileSelection();
+
+        // find file name String based on number input from file selection
+        String[] files = gradesService.getFileNames();
+        String selectedFile = files[selection-1];
+
+        // use file name to get assignment
+        List<Assignment> assignments = gradesService.getAssignments(selectedFile);
+        reportsService.createStudentSummaryReport(assignments);
+    }
+
+    private void createAllStudentsReport()
+    {
+        String[] files = gradesService.getFileNames();
+
+        // use all file names to get all assignments
+        List<Assignment> assignments = gradesService.getAllAssignments(files);
+        reportsService.createAllStudentSummaryReport(assignments, files.length);
     }
 
     private String parseStudentName(String firstName, String lastName)
