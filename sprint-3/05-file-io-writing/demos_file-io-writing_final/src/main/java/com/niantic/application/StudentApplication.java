@@ -77,6 +77,7 @@ public class StudentApplication implements Runnable
     private void displayAllClasses()
     {
         appLogger.logMessage("Displaying all classes");
+//        List<Student> students = studentService.filterStudentsByGpa(3.0);
         List<Student> students = studentService.getAllStudents()
                                                .stream()
                                                .sorted(Comparator.comparing(Student::getFirstName))

@@ -1,6 +1,6 @@
 package com.niantic.models;
 
-import java.util.List;
+import java.util.*;
 
 public class ClassStatistics
 {
@@ -25,7 +25,16 @@ public class ClassStatistics
 
     public double getLowGpa()
     {
-        return students.stream().mapToDouble(Student::getGpa).min().getAsDouble();
+        var lowestGpa =  students.stream()
+                       .filter(s -> s.getGpa() <0)
+                       .mapToDouble(Student::getGpa)
+                        .min();
+
+        if (lowestGpa.isPresent())
+            return lowestGpa.getAsDouble();
+        else
+            return 0.0;
+
     }
 
     public double getHighGpa()

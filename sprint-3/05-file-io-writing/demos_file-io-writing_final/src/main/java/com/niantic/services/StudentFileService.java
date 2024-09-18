@@ -3,10 +3,7 @@ package com.niantic.services;
 import com.niantic.models.Student;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class StudentFileService implements StudentService
 {
@@ -62,5 +59,11 @@ public class StudentFileService implements StudentService
         files.forEach(file -> students.addAll(getStudents(file)));
 
         return students;
+    }
+
+    public List<Student> filterStudentsByGpa(double gpa)
+    {
+        List<Student> students = getAllStudents();
+        return students.stream().filter(s -> s.getGpa() >= gpa).toList();
     }
 }
