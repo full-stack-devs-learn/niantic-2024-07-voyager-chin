@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ReportsService
 {
-    private static void ensureDirectoryExists(String path)
+    private void ensureDirectoryExists(String path)
     {
         File directory = new File(path);
         if(!directory.exists())
