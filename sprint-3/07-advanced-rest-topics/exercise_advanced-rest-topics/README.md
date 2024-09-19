@@ -20,7 +20,7 @@ After completing this exercise, you'll understand how to:
 
 # Exercises
 
-## 1: Create a Student Summary Report
+## 1: Update the ProductController
 
 Update your ProductsController to return `ResponseEntity<?>` for each request.
 
