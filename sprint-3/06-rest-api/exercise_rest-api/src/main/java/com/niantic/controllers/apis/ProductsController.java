@@ -14,7 +14,17 @@ public class ProductsController
     private ProductDao productDao = new MySqlProductDao();
 
     @GetMapping("/api/products")
-    public List<Product> getAllProducts() { return productDao.getProducts(); }
+    public List<Product> getAllProducts(@RequestParam(defaultValue = "0") int catId)
+    {
+        if(catId > 0)
+        {
+            return productDao.getProductsByCategory(catId);
+        }
+        else
+        {
+            return productDao.getProducts();
+        }
+    }
 
     @GetMapping("/api/products/{id}")
     public Product getProduct(@PathVariable int id) { return productDao.getProduct(id); }
@@ -34,10 +44,4 @@ public class ProductsController
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProduct(@PathVariable int id) { productDao.deleteProduct(id); }
 
-    //NOT WORKING YET
-//    @GetMapping("/api/products/")
-//    public List<Product> getProductsByCategoryId(@RequestParam("catId") int catId)
-//    {
-//        return productDao.getProductsByCategory(catId);
-//    }
 }
