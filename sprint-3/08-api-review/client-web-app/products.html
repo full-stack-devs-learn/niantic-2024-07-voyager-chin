@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Northwind Home</title>
+    <title>Northwind Products</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/minty/bootstrap.min.css" integrity="sha512-+/uDiVv4ZLhHnXToJFPwYK08kkG2et1rSuiitOl+0hdzmx2N6HQaMqm/7ORzr8dhco+cyGZCRxkXU7EMMYOLfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -43,17 +43,18 @@
     <button id="add-button" class="btn btn-warning">Add</button>
 </main>
 
-<main class="container mt-4 categories-container" id="categories-container">
+<main class="container mt-4 categories-container" id="products-container">
 
 </main>
 
-<template id="category-template">
+<template id="product-template">
     <div class="card category-card">
-        <div id="category-header" class="card-header"></div>
-        <div id="category-body" class="card-body">
-            <img id="category-image">
+        <div id="product-header" class="card-header"></div>
+        <div id="product-body" class="card-body">
+            <img id="product-image" style="max-width: 170px">
         </div>
         <div class="card-footer">
+            <div id="edit-button" class="btn btn-link">edit</div>
             <div id="delete-button" class="btn btn-link">delete</div>
         </div>
     </div>
@@ -67,7 +68,7 @@
         <div class="card-body">
 
             <div class="form-floating mb-3">
-                <input class="form-control" type="text" id="product-name" placeholder="Category Name" required>
+                <input class="form-control" type="text" id="product-name" placeholder="Product Name" required>
                 <div class="invalid-feedback">Enter the product name.</div>
                 <label for="product-name">Product Name</label>
             </div>
