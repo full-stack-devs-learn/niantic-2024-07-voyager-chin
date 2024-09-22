@@ -20,6 +20,26 @@ document.addEventListener("DOMContentLoaded", function() {
 function loadProducts()
 {
     // load all products
+
+    productService.getProducts()
+        .then(products => {
+            const productContainer = document.getElementById('products-container');
+            productContainer.innerHTML = '';
+
+            products.forEach(product => {
+                const template = document.getElementById('product-template').content.cloneNode(true);
+                template.getElementById('product-header').innerText = product.productName;
+                template.getElementById('product-image').src = `images/product-placeholder.png`;
+            
+                const deleteButton = template.querySelector('.card-footer #delete-button');
+                deleteButton.addEventListener('click', () => {
+                    productService.deleteProduct(product.productId).then(() => {
+                        loadProducts();
+                    })
+                });
+                productContainer.appendChild(template);
+            })
+        })
 }
 
 function showForm()
@@ -37,11 +57,11 @@ function addCategory(event)
 {
     event.preventDefault();
     event.stopPropagation()
-
+    
     addForm.classList.add("was-validated");
-
+    
     if(addForm.checkValidity()){
-
+        
         addFormScreen.classList.add("d-none");
         addForm.classList.remove("was-validated");
     }

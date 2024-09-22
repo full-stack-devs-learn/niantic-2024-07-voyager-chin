@@ -24,7 +24,15 @@ function loadCategories()
             categories.forEach(category => {
                 const template = document.getElementById('category-template').content.cloneNode(true);
                 template.getElementById('category-header').innerText = category.categoryName;
-                template.getElementById('category-image').src = `images/${category.categoryId}.webp`;
+                // template.getElementById('category-image').src = `images/${category.categoryId}.webp`;
+                if(category.categoryId > 8)
+                {
+                    template.getElementById('category-image').src = `images/category-placeholder.png`;
+                }
+                else
+                {
+                    template.getElementById('category-image').src = `images/${category.categoryId}.webp`;
+                };
 
                 const deleteButton = template.querySelector('.card-footer #delete-button');
                 deleteButton.addEventListener('click', () => {
