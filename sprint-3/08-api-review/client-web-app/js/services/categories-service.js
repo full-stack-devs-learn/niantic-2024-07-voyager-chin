@@ -8,6 +8,10 @@ class CategoryService
             .then(response => {
                 return response.data;
             });
+
+        // return fetch(this.baseUrl).then(response => {
+        //     return response.json();
+        // })
     }
 
     getCategoryById(categoryId)
