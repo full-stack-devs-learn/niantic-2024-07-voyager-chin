@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Northwind Home</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/minty/bootstrap.min.css" integrity="sha512-+/uDiVv4ZLhHnXToJFPwYK08kkG2et1rSuiitOl+0hdzmx2N6HQaMqm/7ORzr8dhco+cyGZCRxkXU7EMMYOLfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--  JS  -->
+    <script src="js/lib/axios.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/services/categories-service.js"></script>
+    <script src="js/pages/categories-page.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Northwind</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Products</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="container mt-4">
+    <h1>Categories</h1>
+    <button id="add-button" class="btn btn-warning">Add</button>
+</header>
+
+<main class="container mt-4 categories-container" id="categories-container">
+
+</main>
+
+<template id="category-template">
+    <div class="card category-card">
+        <div id="category-header" class="card-header"></div>
+        <div id="category-body" class="card-body">
+            <img id="category-image">
+        </div>
+        <div class="card-footer">
+            <a href="/products.html?catId=" id="products-link" class="btn btn-link">products</a>
+            <div id="edit-button" class="btn btn-link">edit</div>
+            <div id="delete-button" class="btn btn-link">delete</div>
+        </div>
+    </div>
+</template>
+
+<div class="add-form-screen d-none" id="add-form-screen">
+    <form class="card add-form" id="add-form">
+        <div class="card-header">
+            <h1>Add New Category</h1>
+        </div>
+        <div class="card-body">
+
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" id="category-name" placeholder="Category Name" required>
+                <div class="invalid-feedback">Enter the category name.</div>
+                <label for="category-name">Category Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" rows="4" id="category-description" placeholder="Description" required ></textarea>
+                <div class="invalid-feedback">Enter the description.</div>
+                <label for="category-description">Description</label>
+            </div>
+        </div>
+        <div class="card-footer add-form-buttons">
+            <button class="btn btn-danger" id="cancel-button" type="reset">Cancel</button>
+            <button class="btn btn-success" id="save-button" type="submit">Add</button>
+            <button class="btn btn-success d-none" id="update-button" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
