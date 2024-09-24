@@ -1,0 +1,28 @@
+#navigation {
+  display: flex;
+  gap: 10px;
+  background-color: #e2e2e2;
+  padding: 10px;
+  padding-bottom: 5px;
+}
+
+#navigation img {
+  height: 50px;
+  margin-top: -5px;;
+}
+
+#navigation h1 {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.employee-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: solid 1px #ddd;
+}
+
+.employee-row img {
+  height: 100px;
+}
