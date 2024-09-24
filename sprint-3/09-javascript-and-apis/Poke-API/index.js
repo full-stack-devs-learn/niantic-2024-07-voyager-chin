@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", function()
     // const meowthBtn = document.getElementById("meowth-btn");
     // const togepiBtn = document.getElementById("togepi-btn");
 
-    document.getElementById("pikachu-btn").addEventListener("click", pokeFetch("pikachu"));
-    document.getElementById("squirtle-btn").addEventListener("click", pokeFetch("squirtle"));
-    document.getElementById("charizard-btn").addEventListener("click", pokeFetch("charizard"));
-    document.getElementById("bulbasaur-btn").addEventListener("click", pokeFetch("bulbasaur"));
-    document.getElementById("starmie-btn").addEventListener("click", pokeFetch("starmie"));
-    document.getElementById("diglett-btn").addEventListener("click", pokeFetch("diglett"));
-    document.getElementById("meowth-btn").addEventListener("click", pokeFetch("meowth"));
-    document.getElementById("togepi-btn").addEventListener("click", pokeFetch("togepi"));
+    document.getElementById("pikachu-btn").addEventListener("click", function() { pokeFetch("pikachu") });
+    document.getElementById("squirtle-btn").addEventListener("click", function() { pokeFetch("squirtle") });
+    document.getElementById("charizard-btn").addEventListener("click", function() { pokeFetch("charizard") });
+    document.getElementById("bulbasaur-btn").addEventListener("click", function() { pokeFetch("bulbasaur") });
+    document.getElementById("starmie-btn").addEventListener("click", function() { pokeFetch("starmie") });
+    document.getElementById("diglett-btn").addEventListener("click", function() { pokeFetch("diglett") });
+    document.getElementById("meowth-btn").addEventListener("click", function() { pokeFetch("meowth") });
+    document.getElementById("togepi-btn").addEventListener("click", function() { pokeFetch("togepi") });
 
     
 })
@@ -45,7 +45,7 @@ function pokeFetch(pokemon)
                                         const abilityHolder = document.getElementById("ability");
 
                                         imgHolder.src = imageLink;
-                                        nameHolder.textContent = `Pokemon: ${name}`;
+                                        nameHolder.textContent = `${name}`;
                                         typeHolder.textContent = `Type: ${type}`;
                                         abilityHolder.textContent = `Ability: ${ability}`;
 
