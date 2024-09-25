@@ -1,0 +1,6 @@
+.category-card {
+    cursor: pointer;
+}
+.category-card:hover {
+    background-color: antiquewhite;
+}
