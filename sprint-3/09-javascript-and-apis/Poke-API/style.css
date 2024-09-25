@@ -1,0 +1,27 @@
+* {
+    text-align: center;
+}
+
+.contents {
+    display: flex;
+}
+
+.contents2 {
+    margin: 0 auto;
+}
+
+.img-container {
+    display: flex;
+}
+
+img {
+    margin: 0 auto;
+}
+
+#name, #type, #ability {
+    color: black;
+}
+
+#name {
+    font-weight:bolder;
+}

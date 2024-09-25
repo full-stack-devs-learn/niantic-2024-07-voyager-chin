@@ -1,14 +1,5 @@
 document.addEventListener("DOMContentLoaded", function()
 {
-    // const pikachuBtn = document.getElementById("pikachu-btn");
-    // const squirtleBtn = document.getElementById("squirtle-btn");
-    // const charizardBtn = document.getElementById("charizard-btn");
-    // const bulbasaurBtn = document.getElementById("bulbasaur-btn");
-    // const starmieBtn = document.getElementById("starmie-btn");
-    // const diglettBtn = document.getElementById("diglett-btn");
-    // const meowthBtn = document.getElementById("meowth-btn");
-    // const togepiBtn = document.getElementById("togepi-btn");
-
     document.getElementById("pikachu-btn").addEventListener("click", function() { pokeFetch("pikachu") });
     document.getElementById("squirtle-btn").addEventListener("click", function() { pokeFetch("squirtle") });
     document.getElementById("charizard-btn").addEventListener("click", function() { pokeFetch("charizard") });
