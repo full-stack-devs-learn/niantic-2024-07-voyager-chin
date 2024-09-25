@@ -1,0 +1,27 @@
+#navigation {
+    display: flex;
+    gap: 10px;
+    background-color: #e2e2e2;
+    padding: 10px;
+    padding-bottom: 5px;
+  }
+  
+  #navigation img {
+    height: 50px;
+    margin-top: -5px;;
+  }
+  
+  #navigation h1 {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .link
+  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .link:hover {
+    background-color: cornsilk;
+  }
