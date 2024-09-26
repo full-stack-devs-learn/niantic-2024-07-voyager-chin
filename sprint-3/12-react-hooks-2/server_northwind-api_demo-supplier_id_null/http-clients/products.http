@@ -1,0 +1,30 @@
+### GET request for all products
+GET http://localhost:8080/products?catId=1
+
+### GET request for product 1
+GET http://localhost:8080/products/1
+
+### GET request for product 200 - INVALID
+GET http://localhost:8080/products/200
+
+### POST to add new product
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+  "name": "Hot Cocoa",
+  "categoryId": 1,
+  "quantityPerUnit": "6 packets",
+  "unitPrice": 12.50
+}
+
+### PUT to update product
+PUT http://localhost:8080/products/83
+Content-Type: application/json
+
+{
+  "name": "Hot Cocoa",
+  "categoryId": 1,
+  "quantityPerUnit": "6 packets",
+  "unitPrice": 22.50
+}
