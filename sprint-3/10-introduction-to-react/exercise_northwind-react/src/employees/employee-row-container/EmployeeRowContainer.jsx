@@ -5,7 +5,7 @@ import { employees }  from '../../data.js'
 
 export default function EmployeeRowContainer() 
 {
-    const [selectedEmployee, setSelectedEmployee] = useState("None Selected");
+    let [selectedEmployee, setSelectedEmployee] = useState("None Selected");
 
     const employeeSelected = (name) =>
     {
