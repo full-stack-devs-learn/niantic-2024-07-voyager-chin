@@ -1,0 +1,11 @@
+.employee-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: solid 1px #ddd;
+  }
+  
+  .employee-row img {
+    height: 100px;
+  }
+  
