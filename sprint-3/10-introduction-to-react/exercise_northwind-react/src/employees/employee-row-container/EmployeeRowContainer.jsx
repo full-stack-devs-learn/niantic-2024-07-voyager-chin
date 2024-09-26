@@ -19,6 +19,7 @@ export default function EmployeeRowContainer()
             employees.map((employee) => (
                 <EmployeeRow key={employee.employeeId}
                 employee={`${employee.firstName} ${employee.lastName}`}
+                title={employee.title}
                 id={employee.employeeId}
                 onEmployeeSelected={employeeSelected} 
                 ></EmployeeRow>
