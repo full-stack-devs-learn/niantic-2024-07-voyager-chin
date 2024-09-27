@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../product-card/ProductCard";
 import productService from "../../../services/product-service";
+import './ProductCardContainer.css'
 
 export default function ProductCardContainer()
 {
@@ -34,6 +35,7 @@ export default function ProductCardContainer()
             {
                 products.map((product) => (
                     <ProductCard key={product.productId}
+                    productId={product.productId}
                     product={product.productName}
                     unitPrice={product.unitPrice}
                     ></ProductCard>
