@@ -4,7 +4,7 @@ import CategoriesPage from "./components/categories/cagtegories-page/CategoriesP
 import ProductsPage from "./components/products/products-page/ProductsPage"
 
 function App() {
-  const [pageName, setPageName] = useState("products")
+  const [pageName, setPageName] = useState("categories")
 
   const pageChangeHanlder = (pageName) =>
   {
