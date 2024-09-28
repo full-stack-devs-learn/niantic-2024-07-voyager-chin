@@ -5,8 +5,7 @@ import categoryService from '../../../services/category-service';
 import ProductsList from '../../products/products-list/ProductsList';
 // import { categories } from '../../../data'
 
-export default function CategoryCardContainer()
-{
+export default function CategoryCardContainer() {
     const [selectedCategory, setSelectedCategory] = useState("None Selected");
     const [selectedCategoryId, setSelectedCategoryId] = useState(0);
     const [categories, setCategories] = useState([]);
@@ -15,19 +14,18 @@ export default function CategoryCardContainer()
 
         categoryService.getAllCategories().then(data => {
 
-            console.log("data being returned:");            
+            console.log("data being returned:");
             console.log(data);
-            setCategories(data);   
+            setCategories(data);
         })
 
-    }, 
-    // an emptry array says that I only want
-    // this code to run one time before the first render
-    [])
-   
+    },
+        // an emptry array says that I only want
+        // this code to run one time before the first render
+        [])
 
-    const categorySelected = (name) =>
-    {
+
+    const categorySelected = (name) => {
         setSelectedCategory(name);
 
         const categoryId = categories.filter(cat => cat.categoryName === name)[0].categoryId;
@@ -41,22 +39,22 @@ export default function CategoryCardContainer()
         setCategories(newList)
     }
 
-    return(
+    return (
         <>
-        <h5 className="container">Selected Category: {selectedCategory}</h5>
-        <main className="container mt-4 categories-container" id="categories-container">
-        {
-            categories.map((category) => (
-                <CategoryCard key={category.categoryId} 
-                    category={category.categoryName} 
-                    id={category.categoryId}
-                    onCategorySelected={categorySelected}
-                    onCategoryDeleted={categoryDeleted}
-                    ></CategoryCard>
-            ))
-        }
-        </main>
-        <ProductsList categoryId={selectedCategoryId}></ProductsList>
+            <h5 className="container">Selected Category: {selectedCategory}</h5>
+            <main className="container mt-4 categories-container" id="categories-container">
+                {
+                    categories.map((category) => (
+                        <CategoryCard key={category.categoryId}
+                            category={category.categoryName}
+                            id={category.categoryId}
+                            onCategorySelected={categorySelected}
+                            onCategoryDeleted={categoryDeleted}
+                        ></CategoryCard>
+                    ))
+                }
+            </main>
+            <ProductsList categoryId={selectedCategoryId}></ProductsList>
         </>
     )
 }

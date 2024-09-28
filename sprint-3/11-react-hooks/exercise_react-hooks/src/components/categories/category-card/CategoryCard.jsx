@@ -2,18 +2,16 @@ import categoryService from '../../../services/category-service'
 import './CategoryCard.css'
 import { XCircle, XCircleFill } from 'react-bootstrap-icons'
 
-export default function CategoryCard({id, category, onCategorySelected, onCategoryDeleted})
-{
+export default function CategoryCard({ id, category, onCategorySelected, onCategoryDeleted }) {
     const imageUrl = `images/categories/${id}.webp`
-    
+
     const categoryClicked = () => {
         // console.log(id)
         // console.log(category); 
-        onCategorySelected(category)       
+        onCategorySelected(category)
     }
 
-    async function deleteCategory(event)
-    {
+    async function deleteCategory(event) {
         event.stopPropagation();
 
         await categoryService.delete(id);
@@ -21,8 +19,7 @@ export default function CategoryCard({id, category, onCategorySelected, onCatego
         onCategoryDeleted(id);
     }
 
-
-    return(
+    return (
         <div className="card category-card" onClick={categoryClicked}>
             <div id="category-header" className="card-header">{category}</div>
             <div id="category-body" className="card-body">
