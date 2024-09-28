@@ -4,13 +4,3 @@
 .product-card:hover {
     background-color: antiquewhite;
 }
-
-.price {
-    text-align: right;
-}
-
-.id, .product {
-    text-align: left;
-    padding-right: 0;
-    margin-right: 0;
-}
