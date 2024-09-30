@@ -4,7 +4,9 @@
   "description": "This Review Exercise is not graded. The first priority is to get caught up on existing assignments.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/main.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
