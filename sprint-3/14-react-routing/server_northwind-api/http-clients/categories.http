@@ -1,0 +1,26 @@
+### GET request for all categories
+GET http://localhost:8080/categories
+
+### GET request for category 25
+GET http://localhost:8080/categories/25
+
+### GET request for category 2
+GET http://localhost:8080/categories/2
+
+### POST to add new category
+POST http://localhost:8080/categories
+Content-Type: application/json
+
+{
+   "categoryName": "cat 17",
+   "description": "new cat description"
+}
+
+### PUT to update category
+PUT http://localhost:8080/categories/120
+Content-Type: application/json
+
+{
+   "categoryName": "Cat 12",
+   "description": "sample description"
+}
