@@ -3,5 +3,18 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
 }
+
+// {
+//   "compilerOptions": {
+//   "target": "ESNext",
+//   "module": "commonjs",
+//   "rootDir": "./src",
+//   "outDir": "./dist",
+//   "esModuleInterop": true,
+//   "forceConsistentCasingInFileNames": true,
+//   "strict": true,
+//   },
+//   "include": ["src/**/*"]
+//   }
