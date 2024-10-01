@@ -1,8 +1,8 @@
 export default function ProductEdit()
 {
     return (
-        <>
-            <h2>Edit Product</h2>
-        </>
+        <div className="container">
+            <h3>Edit Product</h3>
+        </div>
     )
 }

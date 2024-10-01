@@ -24,18 +24,18 @@ function App() {
                         <Route path='' element={<CategoriesList />} />
                         <Route path=':categoryId' element={<CategoryDetails />} />
                         <Route path='add' element={<CategoryAdd />} />
-                        <Route path='edit' element={<CategoryEdit />} />
+                        <Route path=':categoryId/edit' element={<CategoryEdit />} />
                     </Route>
                     <Route path='/products' element={<ProductsPage />}>
                         <Route path='' element={<ProductsList />} />
                         <Route path=':productId' element={<ProductDetails />} />
                         <Route path='add' element={<ProductAdd />} />
-                        <Route path='edit' element={<ProductEdit />} />
+                        <Route path=':productId/edit' element={<ProductEdit />} />
                     </Route>
                 </Routes>
             </Router>
         </>
     )
 }
-
+//http://localhost:8080/products?minPrice=5&maxPrice=20&name=chai&catId=1
 export default App
