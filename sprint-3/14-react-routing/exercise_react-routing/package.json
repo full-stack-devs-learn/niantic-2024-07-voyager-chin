@@ -1,0 +1,30 @@
+{
+  "name": "exercise_react-routing",
+  "version": "1.0.0",
+  "description": "In this exercise you will create a new React project that uses Routing, instead of state management to navigate between pages.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --port 4000 --open",
+    "start": "ts-node src/main.tsx",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "bootstrap": "^5.3.3",
+    "bootswatch": "^5.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.2",
+    "ts-node": "^10.9.2"
+  }
+}
