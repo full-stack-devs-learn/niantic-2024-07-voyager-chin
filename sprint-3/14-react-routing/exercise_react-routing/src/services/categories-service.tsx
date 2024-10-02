@@ -3,8 +3,7 @@ import { Category } from "../models/category";
 
 class CategoryService
 {
-    // baseUrl = `${import.meta.env.VITE_API_BASE_URL}/categories`
-    baseUrl = `http://localhost:8080/categories`
+    baseUrl = `${import.meta.env.VITE_API_BASE_URL}/categories`
 
     async getAllCategories(): Promise<Category[]>
     {
