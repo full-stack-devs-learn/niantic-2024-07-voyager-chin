@@ -1,4 +1,4 @@
-export class ProductAdd
+export class Product
 {
     productId!: number;
     productName!: string;
