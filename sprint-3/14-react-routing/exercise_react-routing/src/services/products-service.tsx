@@ -3,7 +3,7 @@ import { Product } from "../models/product";
 
 class ProductService
 {
-    baseUrl = `${import.meta.env.VITE_API_BASE_URL}/categories`;
+    baseUrl = `${import.meta.env.VITE_API_BASE_URL}/products`;
 
     async getProducts(categoryId = null): Promise<Product[]>
     {
