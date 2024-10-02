@@ -19,7 +19,7 @@ class ProductService {
     }
 
     getProductByID(productId) {
-        return axios.get(`${this.baseUrl}/${categoryId}`)
+        return axios.get(`${this.baseUrl}/${productId}`)
             .then(response => {
                 return response.data;
             })
